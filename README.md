@@ -30,7 +30,7 @@ Make sure you have the following installed:
 ### Clone the Repository
 ```sh
 git clone git@github.com:harish-gurjar-758/KOPPEE-.git
-cd koppee-mern
+cd koppee
 ```
 
 ### Install Dependencies
