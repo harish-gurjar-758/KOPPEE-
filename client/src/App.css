@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Annapurna+SIL:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Tagesschrift&display=swap');
+
 * {
   margin: 0px;
   padding: 0px;
+  /* font-family: Annapurna SIL", serif; */
 }
 
 :root {
@@ -25,6 +28,7 @@
   --danger: #dc3545;
   --light: #FFFBF2;
   --dark: #111;
+  --Perdarsi-balck: #00000044;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -32,4 +36,161 @@
   --breakpoint-xl: 1200px;
   --font-family-sans-serif: "Montserrat", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Globel classes */
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+/* Website sections Classes */
+.App {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--dark);
+  color: white;
+  /* font-family: 'Merriweather', serif; */
+}
+
+/* --------- */
+/* NavBar */
+/* --------- */
+.NavBar {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Tagesschrift", system-ui;
+  position: absolute;
+  top: 0px;
+  background-color: #0000001c;
+}
+
+.NavBar .logo {
+  width: 80px;
+}
+
+.NavBar .links-container {
+  height: 100%;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2px;
+}
+
+.NavBar .links-container .link h4 {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.NavBar .more-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+}
+
+.NavBar .more-options .orange-btn {
+  width: 100px;
+  height: 30px;
+  font-family: 'Tagesschrift', system-ui;
+  background-color: orange;
+  color: var(--white);
+  border-radius: 2px;
+
+  &:hover {
+    background-color: #f8b231;
+  }
+}
+
+.NavBar .more-options .shoping-btn {
+  position: relative;
+  cursor: pointer;
+
+  .shoping-icon {
+    font-size: 25px;
+  }
+
+  .count {
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 12px;
+    right: -3px;
+    background-color: yellowgreen;
+    border-radius: 50%;
+    font-weight: normal;
+    font-family: 'Merriweather', serif;
+    font-size: 9px;
+  }
+}
+
+
+/* --------- */
+/* Home */
+/* --------- */
+
+.Home .hero {
+  width: 100%;
+  height: 98vh;
+  background-image: url('./components/assets/web-bg-1.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Home .hero .hero-container {
+  width: 100%;
+  height: 100%;
+  background-color: #000000a5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Home .hero .hero-container .btn-group .btn {
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Home .hero .hero-container .btn-group .btn-border {
+  border: 2px solid white;
+  border-radius: 2px;
+
+  &:hover {
+    border: 2px solid transparent;
+  }
+}
+
+.Home .hero .hero-container .btn-group .btn:last-child {
+  border: 2px solid transparent;
+
+  &:hover {
+    border: 2px solid white;
+    border-radius: 2px;
+  }
 }
