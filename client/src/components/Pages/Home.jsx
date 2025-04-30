@@ -18,6 +18,31 @@ export default function Home() {
       </div>
 
       {/* About */}
+      <div className="about">
+        <div className="about-box">
+          <div className='about-details-container'>
+            {/* heading */}
+            <div className="heading">
+              <div className="horigontel-line"></div>
+              <h3>About US</h3>
+            </div>
+
+            {/* details */}
+            <div className="about-details-box">
+              <h2>We Invite You To Visit Our Coffe House</h2>
+              <p>
+                Barista opened its doors in Scottsdale in july 218. Quickly embraced by Phoenix locals and international visitors, our cafe, restaurant & event space has flourished with multiple locations across the region. Barista brings to life childhood favorites, both savory and sweet, from the south of France and North America.
+              </p>
+              <div className="btn orange-btn">Read More</div>
+            </div>
+
+          </div>
+          <div className="image-box">
+            <img src="" alt="" />
+          </div>
+        </div>
+      </div>
+
     </div>
   )
 }
