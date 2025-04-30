@@ -209,11 +209,9 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border: 2px solid #007bff;
 
 }
 
 .Home .about .about-box .about-details-container{
   width: 50%;
-  border: 2px solid red;
 }
