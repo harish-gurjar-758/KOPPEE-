@@ -59,10 +59,11 @@
 
 /* Website sections Classes */
 .App {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   background-color: var(--dark);
   color: white;
+  overflow: hidden;
   /* font-family: 'Merriweather', serif; */
 }
 
@@ -193,4 +194,26 @@
     border: 2px solid white;
     border-radius: 2px;
   }
+}
+
+.Home .about{
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Home .about .about-box{
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px solid #007bff;
+
+}
+
+.Home .about .about-box .about-details-container{
+  width: 50%;
+  border: 2px solid red;
 }

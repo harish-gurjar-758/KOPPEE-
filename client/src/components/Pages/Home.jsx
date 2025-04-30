@@ -38,7 +38,7 @@ export default function Home() {
 
           </div>
           <div className="image-box">
-            <img src="" alt="" />
+            <img src="https://acquiredcoffee.com/wp-content/uploads/2022/02/pump-espresso-machine-300.jpg" alt="" />
           </div>
         </div>
       </div>
