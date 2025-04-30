@@ -18,17 +18,17 @@ export default function Home() {
       </div>
 
       {/* About */}
-      <div className="about">
-        <div className="about-box">
-          <div className='about-details-container'>
+      <div className="about home-sub-section">
+        <div className="about-box sub-section-box">
+          <div className='about-details-container subsection-details-container'>
             {/* heading */}
             <div className="heading">
-              <div className="horigontel-line"></div>
+              <div className="horizontal-line"></div>
               <h3>About US</h3>
             </div>
 
             {/* details */}
-            <div className="about-details-box">
+            <div className="about-details-box subsection-details-box">
               <h2>We Invite You To Visit Our Coffe House</h2>
               <p>
                 Barista opened its doors in Scottsdale in july 218. Quickly embraced by Phoenix locals and international visitors, our cafe, restaurant & event space has flourished with multiple locations across the region. Barista brings to life childhood favorites, both savory and sweet, from the south of France and North America.
@@ -39,6 +39,30 @@ export default function Home() {
           </div>
           <div className="image-box">
             <img src="https://acquiredcoffee.com/wp-content/uploads/2022/02/pump-espresso-machine-300.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+
+      {/* Coffee Menu */}
+      <div className="coffee-menu home-sub-section">
+        <div className='sub-section-box'>
+          <div className="image-box">
+            <img src="https://acquiredcoffee.com/wp-content/uploads/2022/02/pump-espresso-machine-300.jpg" alt="" />
+          </div>
+          <div className='subsection-details-container'>
+            {/* heading */}
+            <div className="heading">
+              <div className="horizontal-line"></div>
+              <h3>Coffee Menu</h3>
+            </div>
+            {/* details */}
+            <div className="subsection-details-box">
+              <h2>Best Quality Beans</h2>
+              <p>
+                Barista opened its doors in Scottsdale in july 218. Quickly embraced by Phoenix locals and international visitors, our cafe, restaurant & event space has flourished with multiple locations across the region. Barista brings to life childhood favorites, both savory and sweet, from the south of France and North America.
+              </p>
+              <div className="btn orange-btn">Read More</div>
+            </div>
           </div>
         </div>
       </div>

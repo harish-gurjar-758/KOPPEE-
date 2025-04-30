@@ -44,10 +44,22 @@
   color: white;
 }
 
+/* ---- */
 .btn {
   border: none;
   outline: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+.orange-btn{
+  background-color: orange;
 }
 
 .btn-group {
@@ -55,6 +67,22 @@
   align-items: center;
   justify-content: center;
   gap: 50px;
+}
+
+/* ----- */
+.heading {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.heading .horizontal-line {
+  width: 40px;
+  height: 3px;
+  background-color: orange;
 }
 
 /* Website sections Classes */
@@ -196,22 +224,47 @@
   }
 }
 
-.Home .about{
+.Home .about,
+.Home .home-sub-section {
   width: 100%;
   min-height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 30px;
 }
 
-.Home .about .about-box{
+.Home .about .about-box,
+.Home .sub-section-box {
   width: 70%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 30px;
 
 }
 
-.Home .about .about-box .about-details-container{
+.Home .about .about-box .about-details-container,
+.Home .subsection-details-container {
   width: 50%;
+}
+
+.Home .about .about-box .about-details-container .about-details-box,
+.Home .subsection-details-box{
+  /* width: 50%; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  h2{
+    font-size: 29px;
+  }
+
+  p{
+    word-spacing: 2px;
+  }
+
+}
+
+.Home .sub-section-box .image-box{
+  /* width: 50%; */
 }
