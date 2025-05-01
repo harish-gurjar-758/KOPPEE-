@@ -224,7 +224,6 @@
   }
 }
 
-.Home .about,
 .Home .home-sub-section {
   width: 100%;
   min-height: 50vh;
@@ -232,9 +231,9 @@
   align-items: center;
   justify-content: center;
   padding-top: 30px;
+  flex-direction: column;
 }
 
-.Home .about .about-box,
 .Home .sub-section-box {
   width: 70%;
   display: flex;
@@ -244,12 +243,10 @@
 
 }
 
-.Home .about .about-box .about-details-container,
 .Home .subsection-details-container {
   width: 50%;
 }
 
-.Home .about .about-box .about-details-container .about-details-box,
 .Home .subsection-details-box{
   /* width: 50%; */
   display: flex;
@@ -265,6 +262,7 @@
 
 }
 
-.Home .sub-section-box .image-box{
-  /* width: 50%; */
+.Home .choose-us .heading{
+  align-items: center;
+  justify-content: center;
 }

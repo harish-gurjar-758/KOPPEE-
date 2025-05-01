@@ -1,4 +1,7 @@
 import React from 'react'
+import { GrUserManager } from "react-icons/gr";
+import { MdOutlineRestaurantMenu } from "react-icons/md";
+import { BsFillCupHotFill } from "react-icons/bs";
 
 export default function Home() {
   return (
@@ -67,6 +70,43 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="home-sub-section choose-us">
+        {/* heading */}
+        <div className="heading">
+          <div className="horizontal-line"></div>
+          <h3>Features</h3>
+        </div>
+        {/* details */}
+        <div className="subsection-details-box">
+          <h2>Why people Choose us?</h2>
+          <p>
+            Porro eveniet, auten ipsum vitae consequent
+          </p>
+          <div className='subsection-details-box'>
+            <div>
+              {/* logo */}
+              <GrUserManager />
+              {/* heading */}
+              <h3>Experienced Barista</h3>
+              {/* peregraph */}
+              <p>Rolorem, beatae dolorum, praesebtium itaque etquam quaerat.</p>
+            </div>
+
+            <div>
+              <MdOutlineRestaurantMenu />
+              <h3>Menu for every taste</h3>
+              <p>Rolorem, beatae dolorum, praesebtium itaque etquam quaerat.</p>
+            </div>
+
+            <div>
+              <BsFillCupHotFill />
+              <h3>Always Quality Beans</h3>
+              <p>Rolorem, beatae dolorum, praesebtium itaque etquam quaerat.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   )
 }
