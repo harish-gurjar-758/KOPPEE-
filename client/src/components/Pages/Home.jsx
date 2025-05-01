@@ -2,6 +2,43 @@ import React from 'react'
 import { GrUserManager } from "react-icons/gr";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { BsFillCupHotFill } from "react-icons/bs";
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+
+const offerData = [
+  {
+    image: "https://th.bing.com/th/id/OIP.W-ctyMIw5v4-y8P5MOgbNAAAAA?pid=ImgDet&w=120&h=120&c=7&dpr=1.3&rs=1",
+    heading: "ESPRESSO",
+    stars: 4,
+    price: "$5.00"
+  },
+  {
+    image: "https://besthomecoffeemachines.com/wp-content/uploads/2022/03/What-is-Cappuccino-Made-of.jpg",
+    heading: "MARASCHINO",
+    stars: 4.5,
+    price: "$6.00"
+  },
+  {
+    image: "https://images.pexels.com/photos/2228889/pexels-photo-2228889.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+    heading: "ANTOCCIND",
+    stars: 4,
+    price: "$5.00"
+  }
+];
+
+// ⭐ Helper to generate star icons:
+const renderStars = (rating) => {
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 >= 0.5;
+  const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+  return (
+    <>
+      {[...Array(fullStars)].map((_, i) => <FaStar key={`full-${i}`} color="orange" />)}
+      {halfStar && <FaStarHalfAlt color="orange" />}
+      {[...Array(emptyStars)].map((_, i) => <FaRegStar key={`empty-${i}`} color="orange" />)}
+    </>
+  );
+};
 
 export default function Home() {
   const ChooseUsData = [
@@ -21,6 +58,9 @@ export default function Home() {
       paragraph: "Rolorem, beatae dolorum, praesebtium itaque etquam quaerat."
     }
   ];
+
+
+
 
   return (
     <div className='Home'>
@@ -88,12 +128,15 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Choose us */}
       <div className="home-sub-section choose-us">
         {/* heading */}
         <div className="heading">
           <div className="horizontal-line"></div>
           <h3>Features</h3>
         </div>
+
+        {/* ---- */}
         <div>
           <h2>Why people Choose us?</h2>
           <p>
@@ -113,6 +156,33 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+
+      </div>
+
+      {/* We Offer You */}
+      <div className="home-sub-section">
+        {/* heading */}
+        <div className="heading">
+          <div className="horizontal-line"></div>
+          <h3>What we Offer You</h3>
+        </div>
+
+        <h2>Our Best Offers this Week</h2>
+
+        <div>
+          {offerData.map((item, index) => (
+            <div key={index}>
+              <div className="image">
+                <img src={item.image} alt="" />
+              </div>
+              <div className="details">
+                <h5>{item.heading}</h5>
+                <div>{renderStars(item.stars)}</div>
+                <p>{item.price}</p>
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>

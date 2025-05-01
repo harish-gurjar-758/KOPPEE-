@@ -80,8 +80,8 @@
 }
 
 .heading .horizontal-line {
-  width: 40px;
-  height: 3px;
+  width: 30px;
+  height: 2px;
   background-color: orange;
 }
 
@@ -270,6 +270,7 @@
 .Home .choose-us .heading{
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .Home .choose-us .subsection-details-container{
