@@ -129,7 +129,7 @@ export default function Home() {
       </div>
 
       {/* Choose us */}
-      <div className="home-sub-section choose-us">
+      <div className="choose-us home-sub-section ">
         {/* heading */}
         <div className="heading">
           <div className="horizontal-line"></div>
@@ -161,7 +161,7 @@ export default function Home() {
       </div>
 
       {/* We Offer You */}
-      <div className="home-sub-section">
+      <div className="offer-you home-sub-section ">
         {/* heading */}
         <div className="heading">
           <div className="horizontal-line"></div>
@@ -170,15 +170,15 @@ export default function Home() {
 
         <h2>Our Best Offers this Week</h2>
 
-        <div>
+        <div className='subsection-details-box'>
           {offerData.map((item, index) => (
-            <div key={index}>
+            <div className='card' key={index}>
               <div className="image">
                 <img src={item.image} alt="" />
               </div>
               <div className="details">
                 <h5>{item.heading}</h5>
-                <div>{renderStars(item.stars)}</div>
+                <div className='retings'>{renderStars(item.stars)}</div>
                 <p>{item.price}</p>
               </div>
             </div>
@@ -186,6 +186,8 @@ export default function Home() {
         </div>
 
       </div>
+
+      {/*  */}
     </div >
   )
 }
