@@ -4,6 +4,24 @@ import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { BsFillCupHotFill } from "react-icons/bs";
 
 export default function Home() {
+  const ChooseUsData = [
+    {
+      icon: <GrUserManager />,
+      heading: "Experienced Barista",
+      paragraph: "Rolorem, beatae dolorum, praesebtium itaque etquam quaerat."
+    },
+    {
+      icon: <MdOutlineRestaurantMenu />,
+      heading: "Menu for every taste",
+      paragraph: "Rolorem, beatae dolorum, praesebtium itaque etquam quaerat."
+    },
+    {
+      icon: <BsFillCupHotFill />,
+      heading: "Always Quality Beans",
+      paragraph: "Rolorem, beatae dolorum, praesebtium itaque etquam quaerat."
+    }
+  ];
+
   return (
     <div className='Home'>
       {/* Hero */}
@@ -76,37 +94,28 @@ export default function Home() {
           <div className="horizontal-line"></div>
           <h3>Features</h3>
         </div>
-        {/* details */}
-        <div className="subsection-details-box">
+        <div>
           <h2>Why people Choose us?</h2>
           <p>
             Porro eveniet, auten ipsum vitae consequent
           </p>
-          <div className='subsection-details-box'>
-            <div>
-              {/* logo */}
-              <GrUserManager />
-              {/* heading */}
-              <h3>Experienced Barista</h3>
-              {/* peregraph */}
-              <p>Rolorem, beatae dolorum, praesebtium itaque etquam quaerat.</p>
-            </div>
+        </div>
 
-            <div>
-              <MdOutlineRestaurantMenu />
-              <h3>Menu for every taste</h3>
-              <p>Rolorem, beatae dolorum, praesebtium itaque etquam quaerat.</p>
-            </div>
+        {/* details */}
+        <div className="subsection-details-container">
 
-            <div>
-              <BsFillCupHotFill />
-              <h3>Always Quality Beans</h3>
-              <p>Rolorem, beatae dolorum, praesebtium itaque etquam quaerat.</p>
-            </div>
+          <div className="subsection-details-box">
+            {ChooseUsData.map((item, index) => (
+              <div key={index}>
+                <h1>{item.icon}</h1>
+                <h3>{item.heading}</h3>
+                <p>{item.paragraph}</p>
+              </div>
+            ))}
           </div>
         </div>
 
       </div>
-    </div>
+    </div >
   )
 }

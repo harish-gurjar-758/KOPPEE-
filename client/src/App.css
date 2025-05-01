@@ -252,6 +252,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+
   h2{
     font-size: 29px;
   }
@@ -262,7 +263,33 @@
 
 }
 
+.Home .choose-us {
+  gap: 30px;
+}
+
 .Home .choose-us .heading{
   align-items: center;
   justify-content: center;
+}
+
+.Home .choose-us .subsection-details-container{
+  width: 70%;
+}
+
+.Home .choose-us .subsection-details-box{
+  flex-direction: row;
+  gap: 50px;
+
+  div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 10px;
+
+    h1{
+      font-size: 40px;
+    }
+  }
 }
