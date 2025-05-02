@@ -84,6 +84,30 @@ export default function Home() {
     }
   ]
 
+  const testimonialsData = [
+    {
+      heading: "",
+      description: "by Admin / Competition/ Aprial 23, 2025",
+      paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nulla asperiores magnam .",
+      user: "",
+      commitDate: ""
+    },
+    {
+      heading: "",
+      description: "by Admin / Competition/ Aprial 23, 2025",
+      paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nulla asperiores magnam .",
+      user: "",
+      commitDate: ""
+    },
+    {
+      heading: "",
+      description: "by Admin / Competition/ Aprial 23, 2025",
+      paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nulla asperiores magnam .",
+      user: "",
+      commitDate: ""
+    }
+  ]
+
 
 
   return (
@@ -257,6 +281,45 @@ export default function Home() {
           ))}
         </div>
 
+      </div>
+
+      {/* Testimonials */}
+
+      <div className="offer-you home-sub-section ">
+        {/* heading */}
+        <div className="heading">
+          <div className="horizontal-line"></div>
+          <h3>Testimonials</h3>
+        </div>
+
+        <div>
+          <h2>What our Visitors Say</h2>
+          <p>Porro eveniet, autem ipsum vitar consequent cum.</p>
+          <p>Repudiandae dignissions fugiat sit nam.</p>
+        </div>
+
+        <div className='subsection-details-box'>
+          {testimonialsData.map((item, index) => (
+            <div className='card' key={index}>
+              <div className="details">
+                <h5>{item.heading}</h5>
+                <div className='retings'>{item.publiceDetails}</div>
+                <p>{item.paragraph}</p></div>
+              <div className="image">
+                <div>
+                  <img src={item.video} alt="" />
+                  <h6></h6>
+                </div>
+                <div>
+                  <p>{item.commitDate}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div>
+          <div className="btn orange-btn">More About us</div>
+        </div>
       </div>
     </div >
   )
