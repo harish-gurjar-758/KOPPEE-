@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import logo from '../assets/web-logo-1.png';
 import { SlHandbag } from "react-icons/sl";
 import { Link } from 'react-router-dom';
 
 export default function NavBar() {
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 0);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <div className='NavBar'>
-            {/* Logo */}
+        <div className={`NavBar ${scrolled ? 'scrolled' : ''}`}>
             <Link className="link" to='/'>
-                <img className='logo' src={logo} alt="" />
+                <img className='logo' src={logo} alt="logo" />
             </Link>
-            {/* Links */}
 
             <div className='links-container'>
                 <Link to='/' className='link'><h4>Home</h4></Link>
@@ -23,17 +32,12 @@ export default function NavBar() {
             </div>
 
             <div className='more-options'>
-                {/* Reservation Button */}
                 <button className="btn orange-btn">Reservation</button>
-                {/* Shoping card Logo */}
                 <div className='shoping-btn'>
                     <SlHandbag className='shoping-icon' />
-                    <div className='count'>
-                        <span>0</span>
-                    </div>
+                    <div className='count'><span>0</span></div>
                 </div>
-
             </div>
         </div>
-    )
+    );
 }
