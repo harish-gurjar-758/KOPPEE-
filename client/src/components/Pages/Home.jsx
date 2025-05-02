@@ -3,6 +3,7 @@ import { GrUserManager } from "react-icons/gr";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { BsFillCupHotFill } from "react-icons/bs";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import { HiArrowLongRight } from "react-icons/hi2";
 
 const offerData = [
   {
@@ -59,6 +60,29 @@ export default function Home() {
     }
   ];
 
+  const videoGalleryData = [
+    {
+      video: "",
+      heading: " Make It Simple",
+      publiceDetails: "by Admin / Competition/ february 23, 2025",
+      paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nulla asperiores magnam fugiat vel tempora corrupti ipsum saepe, voluptate nam ducimus, eveniet debitis ea dolores nesciunt deleniti. Magni, cupiditate ipsum!",
+      readMoreLink: ""
+    },
+    {
+      video: "",
+      heading: "Coffee Shop",
+      publiceDetails: "by Admin / Competition/ march 20, 2025",
+      paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nulla asperiores magnam fugiat vel tempora corrupti ipsum saepe, voluptate nam ducimus, eveniet debitis ea dolores nesciunt deleniti. Magni, cupiditate ipsum!",
+      readMoreLink: ""
+    },
+    {
+      video: "",
+      heading: "Coffee Bar",
+      publiceDetails: "by Admin / Competition/ Aprial 23, 2025",
+      paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nulla asperiores magnam fugiat vel tempora corrupti ipsum saepe, voluptate nam ducimus, eveniet debitis ea dolores nesciunt deleniti. Magni, cupiditate ipsum!",
+      readMoreLink: ""
+    }
+  ]
 
 
 
@@ -205,6 +229,34 @@ export default function Home() {
           <h3>40 <span>+</span></h3>
           <p>Awards and Honors</p>
         </div>
+      </div>
+
+      {/* What Happens Here */}
+      <div className="offer-you home-sub-section ">
+        {/* heading */}
+        <div className="heading">
+          <div className="horizontal-line"></div>
+          <h3>What Happens Here</h3>
+        </div>
+
+        <h2>Our Video Gallery</h2>
+
+        <div className='subsection-details-box'>
+          {videoGalleryData.map((item, index) => (
+            <div className='card' key={index}>
+              <div className="image">
+                <img src={item.video} alt="" />
+              </div>
+              <div className="details">
+                <h5>{item.heading}</h5>
+                <div className='retings'>{item.publiceDetails}</div>
+                <p>{item.paragraph}</p>
+                <div className="readmore-btn">Read More <HiArrowLongRight /> </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </div >
   )
