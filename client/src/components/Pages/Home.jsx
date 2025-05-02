@@ -188,6 +188,24 @@ export default function Home() {
       </div>
 
       {/*  */}
+      <div className='home-sub-section home-section-counter'>
+        <div>
+          <h3>200 <span>+</span></h3>
+          <p>Visitors Daily</p>
+        </div>
+        <div>
+          <h3>400 <span>+</span></h3>
+          <p>Deliveries Monthly</p>
+        </div>
+        <div>
+          <h3>100 <span>%</span></h3>
+          <p>Positive Feedback</p>
+        </div>
+        <div>
+          <h3>40 <span>+</span></h3>
+          <p>Awards and Honors</p>
+        </div>
+      </div>
     </div >
   )
 }
