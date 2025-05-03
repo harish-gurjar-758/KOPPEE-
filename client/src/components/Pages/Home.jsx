@@ -109,6 +109,15 @@ export default function Home() {
     }
   ]
 
+  const tipsData = [
+    {
+      image: "",
+      heading: "",
+      description: "",
+      userDetail: "",
+      publiceTime: ""
+    }
+  ]
 
 
   return (
@@ -330,38 +339,114 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Use the Tips */}
-      <div className="home-sub-section">
+      {/* News Letter */}
+      <div className="offer-you home-sub-section">
         {/* heading */}
         <div className="heading">
           <div className="horizontal-line"></div>
-          <h3>Use the Tips and Recipes of Our Awake</h3>
+          <h3>News Letter</h3>
         </div>
-
+        <h2>Use the Tips and Recipes of Our Awake</h2>
         <div>
           <div>
-            <div>
-              <div>
-                <img src="" alt="" />
-              </div>
-              <div>
-                <h5></h5>
-                <p>
-
-                </p>
+            {tipsData.map((item, index) => (
+              <div key={index}>
                 <div>
-                  <div className="profile"></div>
+                  <img src={item.image} alt="" />
+                </div>
+                <div>
+                  <h5>{item.heading}</h5>
+                  <p>{item.description}</p>
                   <div>
-                    
+                    <div className="profile">{item.userDetail}</div>
+                    <div>{item.publiceTime}</div>
                   </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
 
       </div>
 
+      {/* Working Hours */}
+      <div className='home-sub-section'>
+        <div>
+          <div>
+            {/* heading */}
+            <div className="heading">
+              <div className="horizontal-line"></div>
+              <h3>News Letter</h3>
+            </div>
+            <h2>Working Hours</h2>
+            <p>Rolorem, beatae dolorum, praesentium itaque et quam auaerat.</p>
+            <div className="btn-group">
+              <div className="btn orange-btn">Book A Table</div>
+              <div className="btn">Contact us</div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <div>
+                <h4>Sunday to Tuesday</h4>
+                <p>01:00</p>
+                <p>22:00</p>
+                <h4>Sunday to Tuesday</h4>
+                <p>11:00</p>
+                <p>19:00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Reservation */}
+      <div className='offer-you home-sub-section'>
+        {/* heading */}
+        <div className="heading">
+          <div className="horizontal-line"></div>
+          <h3>News Letter</h3>
+        </div>
+        <div>
+          <h2>Book a Table</h2>
+          <p>Call us 01700-00000 or Complete the Form Below</p>
+        </div>
+        <div className='form'>
+          <div>
+            <div className="input-box">
+              <input type="text" name="" id="" placeholder='Name' />
+            </div>
+            <div className="input-box">
+              <input type="email" name="" id="" placeholder='Email' />
+            </div>
+            <div className="input-box">
+              <input type="phone" name="" id="" placeholder='Phone' />
+            </div>
+          </div>
+          <div>
+            <div className="input-box">
+              <select name="" id="">
+                <option value="Person">Person</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
+            </div>
+            <div className="input-box">
+              <input type="date" name="" id="" placeholder='Date' />
+            </div>
+            <div className="input-box">
+              <select name="" id="">
+                <option value="Time">Time</option>
+                <option value="09:00">09:00</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <textarea name="" id=""></textarea>
+          </div>
+        </div>
+        <div className="btn orange-btn">Reserve A Table</div>
+      </div>
     </div >
   )
 }
