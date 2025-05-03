@@ -405,7 +405,7 @@ export default function Home() {
         {/* heading */}
         <div className="heading">
           <div className="horizontal-line"></div>
-          <h3>News Letter</h3>
+          <h3>Reservation</h3>
         </div>
         <div>
           <h2>Book a Table</h2>

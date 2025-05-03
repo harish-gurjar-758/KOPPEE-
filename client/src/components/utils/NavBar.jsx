@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../assets/web-logo-1.png';
 import { SlHandbag } from "react-icons/sl";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function NavBar() {
     const [scrolled, setScrolled] = useState(false);
+    const navigate = useNavigate()
+
+    const handleReservation = () => {
+        navigate('/reservation')
+    }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -32,7 +37,7 @@ export default function NavBar() {
             </div>
 
             <div className='more-options'>
-                <button className="btn orange-btn">Reservation</button>
+                <button className="btn orange-btn" onClick={handleReservation}>Reservation</button>
                 <div className='shoping-btn'>
                     <SlHandbag className='shoping-icon' />
                     <div className='count'><span>0</span></div>
