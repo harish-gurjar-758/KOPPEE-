@@ -4,6 +4,7 @@ import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { BsFillCupHotFill } from "react-icons/bs";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { HiArrowLongRight } from "react-icons/hi2";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 const offerData = [
   {
@@ -62,21 +63,21 @@ export default function Home() {
 
   const videoGalleryData = [
     {
-      video: "",
+      video: "https://images.pexels.com/photos/2228889/pexels-photo-2228889.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
       heading: " Make It Simple",
       publiceDetails: "by Admin / Competition/ february 23, 2025",
       paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nulla asperiores magnam fugiat vel tempora corrupti ipsum saepe, voluptate nam ducimus, eveniet debitis ea dolores nesciunt deleniti. Magni, cupiditate ipsum!",
       readMoreLink: ""
     },
     {
-      video: "",
+      video: "https://images.pexels.com/photos/2228889/pexels-photo-2228889.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
       heading: "Coffee Shop",
       publiceDetails: "by Admin / Competition/ march 20, 2025",
       paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nulla asperiores magnam fugiat vel tempora corrupti ipsum saepe, voluptate nam ducimus, eveniet debitis ea dolores nesciunt deleniti. Magni, cupiditate ipsum!",
       readMoreLink: ""
     },
     {
-      video: "",
+      video: "https://images.pexels.com/photos/2228889/pexels-photo-2228889.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
       heading: "Coffee Bar",
       publiceDetails: "by Admin / Competition/ Aprial 23, 2025",
       paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nulla asperiores magnam fugiat vel tempora corrupti ipsum saepe, voluptate nam ducimus, eveniet debitis ea dolores nesciunt deleniti. Magni, cupiditate ipsum!",
@@ -284,7 +285,6 @@ export default function Home() {
       </div>
 
       {/* Testimonials */}
-
       <div className="offer-you home-sub-section ">
         {/* heading */}
         <div className="heading">
@@ -319,8 +319,49 @@ export default function Home() {
         </div>
         <div>
           <div className="btn orange-btn">More About us</div>
+          <div></div>
+          <div>
+            SLIDER NAVIGATION
+            <div>
+              <div className="btn"><FaArrowLeft /></div>
+              <div className="btn"><FaArrowRight /></div>
+            </div>
+          </div>
         </div>
       </div>
+
+      {/* Use the Tips */}
+      <div className="home-sub-section">
+        {/* heading */}
+        <div className="heading">
+          <div className="horizontal-line"></div>
+          <h3>Use the Tips and Recipes of Our Awake</h3>
+        </div>
+
+        <div>
+          <div>
+            <div>
+              <div>
+                <img src="" alt="" />
+              </div>
+              <div>
+                <h5></h5>
+                <p>
+
+                </p>
+                <div>
+                  <div className="profile"></div>
+                  <div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div >
   )
 }
