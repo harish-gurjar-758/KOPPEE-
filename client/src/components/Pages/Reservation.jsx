@@ -3,8 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 export default function Reservation() {
     const location = useLocation();
-    const currentPath = location.pathname; // e.g., "/reservation/123"
-    const pathAfterCoffee = currentPath.replace('/reservation', ''); // customize this depending on your route structure
+    const currentPath = location.pathname;
 
     return (
         <div className='Reservation'>
