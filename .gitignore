@@ -6,6 +6,7 @@
 
 # -- Server --
 /server/node_modules
+/Server/.env
 
 /.pnp
 .pnp.js
