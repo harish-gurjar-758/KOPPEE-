@@ -1,11 +1,17 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom';
 
 export default function Reservation() {
+    const location = useLocation();
+    const currentPath = location.pathname; // e.g., "/reservation/123"
+    const pathAfterCoffee = currentPath.replace('/reservation', ''); // customize this depending on your route structure
+
     return (
         <div className='Reservation'>
             <div className="reservation-hero">
                 <div className='reservation-hero-box'>
                     <h1>Reserve You Table On Your Date & Time</h1>
+                    <h5>Coffee{currentPath}</h5>
                 </div>
             </div>
             <div className='reservation-container'>
@@ -41,7 +47,7 @@ export default function Reservation() {
                             </div>
                         </div>
                         <div className='message-box'>
-                            <textarea name="" id=""></textarea>
+                            <textarea colum="2" name="" id=""></textarea>
                         </div>
                         <div className="btn orange-btn">Reserve A Table</div>
                     </div>

@@ -371,7 +371,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 30px;
   background-color: #00000096;
+  font-family: 'Merriweather', serif;
+  h1{
+    width: 50%;
+  }
+  h5{
+    width: 50%;
+    color: orangered;
+    font-size: 19px;
+  }
 }
 
 .Reservation .reservation-container {
