@@ -121,7 +121,12 @@ export default function Reservation() {
                                 onChange={handleChange}
                             ></textarea>
                         </div>
-                        <div className="btn orange-btn" onClick={handleSubmit}>Reserve A Table</div>
+                        <div
+                            className="btn orange-btn"
+                            onClick={handleSubmit}
+                        >
+                            Reserve A Table
+                        </div>
                     </div>
                 </div>
             </div>
