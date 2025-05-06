@@ -5,11 +5,21 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import { LuLayoutDashboard } from "react-icons/lu";
 import { PiArmchairFill } from "react-icons/pi";
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import { RxCross2 } from "react-icons/rx";
 
 export default function NavBar() {
+    const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const navigate = useNavigate();
     const location = useLocation(); // Get current path
+
+
+    const toggleMenu = () => {
+        setMenuOpen(prev => !prev);
+    };
+
+    const handleLinkClick = () => setMenuOpen(false);
 
     const handleReservation = () => {
         navigate('/reservation');
@@ -29,7 +39,7 @@ export default function NavBar() {
     return (
         <div className='Menu'>
             <nav className={`NavBar ${scrolled ? 'scrolled' : ''}`}>
-                <Link className="link" to='/'>
+                <Link className="link" to='/' onClick={handleLinkClick}>
                     <img className='logo' src={logo} alt="logo" />
                 </Link>
                 <div className='links-container'>
@@ -48,8 +58,49 @@ export default function NavBar() {
                         <SlHandbag className='shoping-icon' />
                         <div className='count'><span>0</span></div>
                     </div>
+                    <div className="menu-btn" onClick={toggleMenu}>
+                        {menuOpen ? <RxCross2 size={24} /> : <HiOutlineMenuAlt3 size={24} />}
+                    </div>
                 </div>
             </nav>
+
+            {/* Responsive Menu Link Containers */}
+            {menuOpen && (
+                <div className="responsive-link-container">
+                    <Link to='/' className='link'
+                    onClick={handleLinkClick}
+                    >
+                        <h4>Home</h4></Link>
+                    <Link to='/about' className='link'
+                    onClick={handleLinkClick}
+                    >
+                        <h4>About</h4></Link>
+                    <Link className="link"
+                    onClick={handleLinkClick}
+                    >
+                        <h4>Menu</h4></Link>
+                    <Link className="link"
+                    onClick={handleLinkClick}
+                    >
+                        <h4>Order</h4></Link>
+                    <Link className="link"
+                    onClick={handleLinkClick}
+                    >
+                        <h4>Offer</h4></Link>
+                    <Link className="link"
+                    onClick={handleLinkClick}
+                    >
+                        <h4>Shops</h4></Link>
+                    <Link className='link' to='/reservation'
+                    onClick={handleLinkClick}
+                    >
+                        Reservation</Link>
+                    <Link className="link"
+                    onClick={handleLinkClick}
+                    >
+                        <h4>Contact</h4></Link>
+                </div>
+            )}
 
             {/* Show Layout only for /coffee-shop/admin-block/ */}
             {isAdminBlock && (

@@ -65,7 +65,7 @@
   background-color: orange;
 }
 
-.btn-add{
+.btn-add {
   background-color: var(--success);
   cursor: pointer;
 }
@@ -115,7 +115,7 @@
   width: 100%;
   height: 80px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   font-family: "Tagesschrift", system-ui;
   transition: background-color 0.3s ease;
@@ -127,12 +127,13 @@
 
 .scrolled {
   background-color: #000;
-  box-shadow: #fc0 1px 0 10px;
+  box-shadow: #6e6e6d 1px 0 10px;
   /* color after scroll */
 }
 
 .NavBar .logo {
   width: 80px;
+  margin-left: 20px;
 }
 
 .NavBar .links-container {
@@ -150,10 +151,12 @@
 }
 
 .NavBar .more-options {
+  width: fit-content;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 70px;
+  margin-right: 20px;
 }
 
 .NavBar .more-options .orange-btn {
@@ -194,6 +197,37 @@
   }
 }
 
+.Menu .menu-btn {
+  width: 40px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  display: none;
+}
+
+.Menu .responsive-link-container {
+  width: 200px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  position: fixed;
+  top: 80px;
+  z-index: 1000;
+
+  .link {
+    margin-left: 10px;
+  }
+
+}
+
 /* ----layout--- */
 .Layout {
   min-width: 50px;
@@ -206,9 +240,10 @@
   position: fixed;
   top: 80px;
   z-index: 1000;
-  
+
 }
-.Layout .layout-link-btn{
+
+.Layout .layout-link-btn {
   height: 50px;
   display: flex;
   align-items: center;
@@ -219,23 +254,41 @@
   cursor: pointer;
 }
 
+@media (max-width: 600px) {
+  .NavBar .links-container {
+    display: none;
+  }
+
+  .NavBar .more-options .orange-btn {
+    display: none;
+  }
+
+  .NavBar .more-options {
+    gap: 30px;
+  }
+
+  .Menu .menu-btn {
+    display: block;
+  }
+}
+
 /* --------- */
 /* AdminBlock */
 /* ---------- */
-.AdminBlock{
+.AdminBlock {
   margin-top: 90px;
   margin-left: 250px;
   border-left: 2px solid red;
 }
 
-.AdminBlock .admin-header{
+.AdminBlock .admin-header {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
-.AdminBlock .admin-header .btn-add{
+.AdminBlock .admin-header .btn-add {
   padding: 0px 9px;
   cursor: pointer;
 }
@@ -306,6 +359,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 30px;
 
 }
@@ -319,6 +373,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  flex-wrap: wrap;
 
   h2 {
     font-size: 29px;
@@ -350,6 +405,7 @@
 .Home .offer-you .subsection-details-box {
   flex-direction: row;
   gap: 50px;
+  flex-wrap: wrap;
 
   div {
     display: flex;
@@ -412,7 +468,21 @@
   }
 }
 
+@media (max-width: 600px) {
+  .Home .hero {
+    height: 50vh !important;
+    /* background-size: contsin; */
+  }
+
+  .Home .subsection-details-container {
+    width: 100%;
+  }
+
+}
+
+/* ------------ */
 /* Reservation */
+/* ----------- */
 
 .Reservation .reservation-hero {
   width: 100%;
