@@ -524,8 +524,9 @@ export default function Home() {
               onChange={handleChange}
             ></textarea>
           </div>
+          {/* Submit Btn */}
           <div className="btn orange-btn"
-            onSubmit={handleSubmit}
+            onChange={handleSubmit}
           >Reserve A Table</div>
         </div>
       </div>
