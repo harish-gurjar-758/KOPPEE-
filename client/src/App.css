@@ -58,10 +58,16 @@
   border-radius: 2px;
   font-weight: 500;
   font-family: "Tagesschrift", system-ui;
+  cursor: pointer;
 }
 
 .orange-btn {
   background-color: orange;
+}
+
+.btn-add{
+  background-color: var(--success);
+  cursor: pointer;
 }
 
 .btn-group {
@@ -216,6 +222,18 @@
 .AdminBlock{
   margin-top: 90px;
   margin-left: 250px;
+}
+
+.AdminBlock .admin-header{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.AdminBlock .admin-header .btn-add{
+  padding: 0px 9px;
+  cursor: pointer;
 }
 
 
