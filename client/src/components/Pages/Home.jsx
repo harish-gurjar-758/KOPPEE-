@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { GrUserManager } from "react-icons/gr";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { BsFillCupHotFill } from "react-icons/bs";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { createReservation } from '../../Apis/Apis';
 
 const offerData = [
   {
@@ -43,6 +44,45 @@ const renderStars = (rating) => {
 };
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    person: '',
+    date: '',
+    time: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+  const handleSubmit = async () => {
+    try {
+      // Basic Validation
+      if (!formData.name || !formData.email || !formData.date || !formData.time) {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      await createReservation(formData);
+      alert("Reservation Successfully!");
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        date: '',
+        time: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error("Reservation submission failed", error);
+      alert("Failed to submit reservation. Try again.")
+    }
+  }
+
+  // -----
   const ChooseUsData = [
     {
       icon: <GrUserManager />,
@@ -413,39 +453,81 @@ export default function Home() {
         </div>
         <div className='form'>
           <div>
+
+            {/* Name */}
             <div className="input-box">
-              <input type="text" name="" id="" placeholder='Name' />
+              <input
+                type="text"
+                name="name" id=""
+                placeholder='Name'
+                value={formData.name}
+                onChange={handleChange}
+              />
             </div>
+            {/* email */}
             <div className="input-box">
-              <input type="email" name="" id="" placeholder='Email' />
+              <input
+                type="email" name="email" id=""
+                placeholder='Email'
+                value={formData.email}
+                onChange={handleChange}
+              />
             </div>
+            {/* Phone */}
             <div className="input-box">
-              <input type="phone" name="" id="" placeholder='Phone' />
+              <input
+                type="phone" name="phone" id=""
+                placeholder='Phone'
+                value={formData.phone}
+                onChange={handleChange}
+              />
             </div>
           </div>
           <div>
+            {/* Person */}
             <div className="input-box">
-              <select name="" id="">
+              <select
+                name="person" id=""
+                value={formData.person}
+                onChange={handleChange}
+              >
                 <option value="Person">Person</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
               </select>
             </div>
+            {/* Date */}
             <div className="input-box">
-              <input type="date" name="" id="" placeholder='Date' />
+              <input type="date"
+                name="date" id=""
+                placeholder='Date'
+                value={formData.date}
+                onChange={handleChange}
+              />
             </div>
+            {/* Time */}
             <div className="input-box">
-              <select name="" id="">
+              <select
+                name="time" id=""
+                value={formData.time}
+                onChange={handleChange}
+              >
                 <option value="Time">Time</option>
                 <option value="09:00">09:00</option>
               </select>
             </div>
           </div>
+          {/* message */}
           <div>
-            <textarea name="" id=""></textarea>
+            <textarea name="message" id=""
+              value={formData.message}
+              onChange={handleChange}
+            ></textarea>
           </div>
+          <div className="btn orange-btn"
+            onSubmit={handleSubmit}
+          >Reserve A Table</div>
         </div>
-        <div className="btn orange-btn">Reserve A Table</div>
       </div>
     </div >
   )
