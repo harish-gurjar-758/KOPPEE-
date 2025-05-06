@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import createReservation from '../../../Apis/Apis.js'
+import { createReservation } from '../../../Apis/Apis';
 
 export default function AddNewReservation() {
     const [formData, setFormData] = useState({
@@ -60,25 +60,55 @@ export default function AddNewReservation() {
                             />
                         </div>
                         <div className="input-box">
-                            <input type="email" name="" id="" placeholder='Email' />
+                            <input
+                                type="email"
+                                name="email"
+                                id=""
+                                placeholder='Email'
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
                         </div>
                         <div className="input-box">
-                            <input type="phone" name="" id="" placeholder='Phone' />
+                            <input
+                                type="phone"
+                                name="phone"
+                                id=""
+                                placeholder='Phone'
+                                value={formData.phone}
+                                onChange={handleChange}
+                            />
                         </div>
                     </div>
                     <div>
                         <div className="input-box">
-                            <select name="" id="">
+                            <select
+                                name="person"
+                                id=""
+                                value={formData.person}
+                                onChange={handleChange}
+                            >
                                 <option value="Person">Person</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                             </select>
                         </div>
                         <div className="input-box">
-                            <input type="date" name="" id="" placeholder='Date' />
+                            <input
+                                type="date"
+                                name="date"
+                                id=""
+                                placeholder='Date'
+                                value={formData.date}
+                                onChange={handleChange}
+                            />
                         </div>
                         <div className="input-box">
-                            <select name="" id="">
+                            <select
+                                name="time" id=""
+                                value={formData.time}
+                                onChange={handleChange}
+                            >
                                 <option value="Time">Time</option>
                                 <option value="09:00">09:00</option>
                             </select>
