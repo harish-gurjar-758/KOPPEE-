@@ -10,7 +10,7 @@ export default function AddNewReservation() {
         date: '',
         time: '',
         message: '',
-    })
+    });
 
     const handleChange = (e) => {
 
@@ -115,7 +115,10 @@ export default function AddNewReservation() {
                         </div>
                     </div>
                     <div>
-                        <textarea name="" id=""></textarea>
+                        <textarea name="message" id=""
+                            value={formData.message}
+                            onChange={handleChange}
+                        ></textarea>
                     </div>
                     <div className="btn orange-btn" onClick={handleSubmit}>Reserve A Table</div>
                 </div>
