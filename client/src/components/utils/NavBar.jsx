@@ -3,6 +3,9 @@ import logo from '../assets/web-logo-1.png';
 import { SlHandbag } from "react-icons/sl";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
+import { LuLayoutDashboard } from "react-icons/lu";
+import { PiArmchairFill } from "react-icons/pi";
+
 export default function NavBar() {
     const [scrolled, setScrolled] = useState(false);
     const navigate = useNavigate();
@@ -51,16 +54,18 @@ export default function NavBar() {
             {/* Show Layout only for /coffee-shop/admin-block/ */}
             {isAdminBlock && (
                 <div className='Layout'>
-                    {/* Layout content */}
-                    <Link to='/coffee-shop/admin-block/dashboard'>
-                        <h5>Dashboard</h5>
-                    </Link>
-                    <Link>
-                        <h5>Reservation</h5>
-                    </Link>
-                    <Link>
-                        <h5>Orders</h5>
-                    </Link>
+                    <div className="layout-link-btn" onClick={() => navigate('/coffee-shop/admin-block/?section=dashboard')}>
+                        <LuLayoutDashboard />
+                        <h5> Dashboard</h5>
+                    </div>
+                    <div className="layout-link-btn" onClick={() => navigate('/coffee-shop/admin-block/?section=reservation')}>
+                        <PiArmchairFill />
+                        <h5> Reservation</h5>
+                    </div>
+                    <div className="layout-link-btn" onClick={() => navigate('/coffee-shop/admin-block/?section=order')}>
+                        <SlHandbag />
+                        <h5> Orders</h5>
+                    </div>
                 </div>
             )}
         </div>

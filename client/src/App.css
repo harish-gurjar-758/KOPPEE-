@@ -191,9 +191,31 @@
 /* ----layout--- */
 .Layout {
   min-width: 50px;
-  max-width: 100px;
+  max-width: 150px;
   height: 100vh;
   background-color: #000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+}
+.Layout .layout-link-btn{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  padding-left: 10px;
+  background-color: #212121;
+  cursor: pointer;
+}
+
+/* --------- */
+/* AdminBlock */
+/* ---------- */
+.AdminBlock{
+  margin-top: 90px;
+  margin-left: 250px;
 }
 
 
