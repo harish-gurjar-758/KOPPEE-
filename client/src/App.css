@@ -109,9 +109,6 @@
 .Menu {
   width: 100%;
   height: auto;
-  position: fixed;
-  top: 0px;
-  z-index: 1000;
 }
 
 .NavBar {
@@ -123,6 +120,9 @@
   font-family: "Tagesschrift", system-ui;
   transition: background-color 0.3s ease;
   background-color: #00000094;
+  position: fixed;
+  top: 0px;
+  z-index: 1000;
 }
 
 .scrolled {
@@ -203,6 +203,9 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  position: fixed;
+  top: 80px;
+  z-index: 1000;
   
 }
 .Layout .layout-link-btn{
@@ -222,6 +225,7 @@
 .AdminBlock{
   margin-top: 90px;
   margin-left: 250px;
+  border-left: 2px solid red;
 }
 
 .AdminBlock .admin-header{
