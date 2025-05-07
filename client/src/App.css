@@ -287,6 +287,64 @@
   margin-left: 250px;
 }
 
+.AdminBlock .Dashboard {
+  width: 100%;
+  display: flex;
+  padding-top: 50px;
+}
+
+.AdminBlock .Dashboard .dashboard-left {
+  width: 70%;
+}
+
+.AdminBlock .Dashboard .dashboard-left .card-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.AdminBlock .Dashboard .dashboard-left .card-group .card {
+  width: 250px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  /* box-shadow: #6e6e6d 1px 0 10px; */
+  box-shadow: 1px 1px 2px gray;
+  border-radius: 5px;
+
+  .icon {
+    font-size: 50px;
+    margin-left: 10px;
+  }
+}
+
+.AdminBlock .Dashboard .dashboard-left .card-group .card .details h2:nth-of-type(2) {
+  color: gainsboro;
+}
+
+.AdminBlock .Dashboard .dashboard-left .today-reservations {
+  width: 100%;
+  margin-top: 50px;
+  box-shadow: #303030 1px 0 10px;
+  border-radius: 3px;
+
+  .header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      text-decoration: underline;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+}
+
+
 .AdminBlock .admin-header {
   width: 100%;
   display: flex;
