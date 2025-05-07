@@ -63,11 +63,18 @@
 
 .orange-btn {
   background-color: orange;
+  padding: 0px 6px;
 }
 
 .btn-add {
   background-color: var(--success);
   cursor: pointer;
+}
+
+.btn-discard {
+  background-color: darkred;
+  display: flex;
+  gap: 5px;
 }
 
 .btn-group {
@@ -278,7 +285,6 @@
 .AdminBlock {
   margin-top: 90px;
   margin-left: 250px;
-  border-left: 2px solid red;
 }
 
 .AdminBlock .admin-header {
@@ -291,6 +297,26 @@
 .AdminBlock .admin-header .btn-add {
   padding: 0px 9px;
   cursor: pointer;
+}
+.admin-list{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+.AdminBlock .admin-list table,
+th,
+td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+
+.AdminBlock .admin-list .action-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 
@@ -591,17 +617,19 @@
 }
 
 /* .Reservation  */
-.form .message-container{
+.form .message-container {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 8px;
-  p{
+
+  p {
     width: 100%;
   }
 }
+
 .form .message-box {
   width: 100%;
   height: 150px;
@@ -634,11 +662,12 @@
 @media (max-width: 600px) {
 
   /* .Reservation */
-  .form .message-container{
-    p{
+  .form .message-container {
+    p {
       width: fit-content;
     }
   }
+
   .form .message-box {
     width: 80%;
 

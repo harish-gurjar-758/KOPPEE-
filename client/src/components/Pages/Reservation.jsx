@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import { createReservation } from '../../Apis/Apis';
 
 export default function Reservation() {
+    const textareaRef = useRef(null);
     const location = useLocation();
     const currentPath = location.pathname;
     const [formData, setFormData] = useState({
@@ -16,9 +17,21 @@ export default function Reservation() {
     });
 
     const handleChange = (e) => {
+        // Auto-resize the textarea height
+        if (textareaRef.current) {
+            textareaRef.current.style.height = 'auto'; //reset height
+            textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+        }
 
         setFormData({ ...formData, [e.target.name]: e.target.value });
+
     }
+
+    // Count words
+    const wordCount = formData.message.trim().split(/\s+/).filter(Boolean).length;
+    const isOverLimit = wordCount > 50;
+
+    // Subit Button 
     const handleSubmit = async () => {
         try {
             // Basic Validation
@@ -115,12 +128,23 @@ export default function Reservation() {
                                 </select>
                             </div>
                         </div>
-                        <div className='message-box'>
-                            <textarea colum="2" name="message" id=""
-                            placeholder='Message'
-                                value={formData.message}
-                                onChange={handleChange}
-                            ></textarea>
+                        {/*  Message  */}
+                        <div className='message-container'>
+                            <div className='message-box'>
+                                <textarea
+                                    ref={textareaRef}
+                                    name="message"
+                                    id=""
+                                    placeholder='Message'
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                ></textarea>
+                            </div>
+                            <p style={{ color: isOverLimit ? 'red' : 'white' }}>
+                                {isOverLimit
+                                    ? 'You have exceeded the 50 word limit!'
+                                    : 'Write Your Message in 50 words only. . . '}
+                            </p>
                         </div>
                         <div
                             className="btn orange-btn"

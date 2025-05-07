@@ -72,7 +72,7 @@ export default function Home() {
   const wordCount = formData.message.trim().split(/\s+/).filter(Boolean).length;
   const isOverLimit = wordCount > 50;
 
-  // 
+  // reservation Table Sub,it Button
   const handleSubmit = async () => {
     try {
       // Basic Validation
@@ -551,7 +551,7 @@ export default function Home() {
             </p>
           </div>
           {/* Submit Btn */}
-          <div className="btn orange-btn"
+          <div className="btn btn-add"
             onChange={handleSubmit}
           >Reserve A Table</div>
         </div>
