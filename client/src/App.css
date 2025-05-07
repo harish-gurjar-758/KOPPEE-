@@ -298,21 +298,57 @@
   padding: 0px 9px;
   cursor: pointer;
 }
-.admin-list{
+
+.admin-list {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 40px;
 }
+
 .AdminBlock .admin-list table,
 th,
 td {
+  height: 60px;
   border: 1px solid white;
   border-collapse: collapse;
+  text-align: center;
 }
 
-.AdminBlock .admin-list .action-box{
+.AdminBlock .admin-list .status-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.AdminBlock .admin-list .status-box .status-reserved,
+.AdminBlock .admin-list .status-box .status-wating,
+.AdminBlock .admin-list .status-box .status-padding {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5px;
+  padding: 0px 4px;
+  border-radius: 2px;
+}
+
+.AdminBlock .admin-list .status-box .status-reserved {
+
+  color: var(--success);
+}
+
+.AdminBlock .admin-list .status-box .status-wating {
+  color: var(--warning);
+}
+
+.AdminBlock .admin-list .status-box .status-padding {
+  color: darkred;
+}
+
+.AdminBlock .admin-list .action-box {
   display: flex;
   align-items: center;
   justify-content: center;

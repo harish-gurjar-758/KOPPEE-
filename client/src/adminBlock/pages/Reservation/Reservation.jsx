@@ -3,6 +3,9 @@ import { getAllReservations } from '../../../Apis/Apis';
 import { useNavigate } from 'react-router-dom';
 import { PiEyesBold } from "react-icons/pi";
 import { MdDeleteForever } from "react-icons/md";
+import { IoCheckmarkDoneSharp } from "react-icons/io5";
+import { BiSolidStopwatch } from "react-icons/bi";
+import ReactLoading from 'react-loading';
 
 // Format date to DD/MM/YYYY
 function formatDateToDMY(dateStr) {
@@ -46,27 +49,42 @@ export default function Reservation() {
                 <table style={{ width: "90%" }}>
                     <thead>
                         <tr>
+                            <th>Num</th>
                             <th>Name</th>
                             <th>Person</th>
+                            <th>Status</th>
                             <th>Date</th>
                             <th>Time</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {reserveTable.map((item) => (
+                        {reserveTable.map((item, index) => (
                             <tr key={item._id || item.id}>
+                                <td>{index+1}</td>
                                 <td>{item.name}</td>
                                 <td>{item.person}</td>
+                                <td className='status-box'>
+                                    <div className='status-reserved' >
+                                        confirm
+                                        <IoCheckmarkDoneSharp />
+                                    </div>
+                                    <div className='status-wating'>
+                                        Wating
+                                        <BiSolidStopwatch />
+                                    </div>
+                                    <div className='status-padding'>
+                                        Padding
+                                        . . . 
+                                    </div>
+                                </td>
                                 <td>{formatDateToDMY(item.date)}</td>
                                 <td>{item.time}</td>
-                                <td>Pending</td>
                                 <td className='action-box'>
-                                    <div>
+                                    <div className='btn'>
                                         <PiEyesBold />
                                     </div>
-                                    <div>
+                                    <div className='btn btn-discard'>
                                         <MdDeleteForever />
                                     </div>
                                 </td>
