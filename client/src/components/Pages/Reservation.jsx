@@ -117,6 +117,7 @@ export default function Reservation() {
                         </div>
                         <div className='message-box'>
                             <textarea colum="2" name="message" id=""
+                            placeholder='Message'
                                 value={formData.message}
                                 onChange={handleChange}
                             ></textarea>

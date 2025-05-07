@@ -514,7 +514,8 @@
   }
 }
 
-.Reservation .reservation-container {
+/* .Reservation  */
+.reservation-container {
   width: 100%;
   min-height: 50vh;
   display: flex;
@@ -523,20 +524,28 @@
   margin-top: 60px;
 }
 
-.Reservation .form {
+/* .Reservation */
+.form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 30px;
 }
 
-.Reservation .form .input-group {
+/* .Reservation  */
+.form .input-group {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   gap: 40px;
 }
 
-.Reservation .form .input-group .input-box {
+/* .Reservation  */
+.form .input-group .input-box {
   width: 250px;
-  height: 30px;
+  height: 50px;
   background-color: #252525;
   color: white;
   padding-left: 5px;
@@ -552,10 +561,13 @@
     color: white;
     letter-spacing: 1px;
     word-spacing: 2px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
   }
 
   input::placeholder {
     color: white;
+    font-weight: bold;
   }
 
   select {
@@ -564,31 +576,74 @@
     outline: none;
     background: transparent;
     color: white;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
 
     option {
       border: none;
       outline: none;
       background-color: #252525;
       color: white;
+      font-family: 'Times New Roman', Times, serif;
     }
   }
 
 }
 
-.Reservation .form .message-box {
+/* .Reservation  */
+.form .message-container{
   width: 100%;
-  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  p{
+    width: 100%;
+  }
+}
+.form .message-box {
+  width: 100%;
+  height: 150px;
   background-color: #252525;
 
   textarea {
-    width: 100%;
-    height: 100%;
+    width: 96%;
+    /* height: 100%; */
     border: none;
     outline: none;
     background: transparent;
+    color: white;
+    margin: 15px 15px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    resize: none;
+    /* overflow: hidden; */
+  }
+
+  textarea::placeholder {
+    color: white;
   }
 }
 
-.Reservation .form .btn {
+/* .Reservation  */
+.form .btn {
   width: fit-content;
+}
+
+@media (max-width: 600px) {
+
+  /* .Reservation */
+  .form .message-container{
+    p{
+      width: fit-content;
+    }
+  }
+  .form .message-box {
+    width: 80%;
+
+    textarea {
+      width: 90%;
+    }
+  }
 }

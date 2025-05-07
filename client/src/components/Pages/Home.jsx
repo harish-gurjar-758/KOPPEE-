@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { GrUserManager } from "react-icons/gr";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { BsFillCupHotFill } from "react-icons/bs";
@@ -6,6 +6,7 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { createReservation } from '../../Apis/Apis';
+import { useNavigate } from 'react-router-dom';
 
 const offerData = [
   {
@@ -44,6 +45,8 @@ const renderStars = (rating) => {
 };
 
 export default function Home() {
+  const textareaRef = useRef(null);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -55,9 +58,21 @@ export default function Home() {
   });
 
   const handleChange = (e) => {
+    // Auto-resize the textarea height
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto'; //reset height
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
 
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
   }
+
+  // Count words
+  const wordCount = formData.message.trim().split(/\s+/).filter(Boolean).length;
+  const isOverLimit = wordCount > 50;
+
+  // 
   const handleSubmit = async () => {
     try {
       // Basic Validation
@@ -170,7 +185,7 @@ export default function Home() {
           </h4>
           <h2>BREWING DREAMS WIDE COFFEE</h2>
           <div className='btn-group'>
-            <div className="btn btn-border">BOOK A TABLE</div>
+            <div className="btn btn-border" onClick={() => navigate('/reservation')}>BOOK A TABLE</div>
             <div className="btn">OPEN MENU</div>
           </div>
         </div>
@@ -452,7 +467,7 @@ export default function Home() {
           <p>Call us 01700-00000 or Complete the Form Below</p>
         </div>
         <div className='form'>
-          <div>
+          <div className='input-group'>
 
             {/* Name */}
             <div className="input-box">
@@ -483,7 +498,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <div>
+          <div className='input-group'>
             {/* Person */}
             <div className="input-box">
               <select
@@ -518,11 +533,22 @@ export default function Home() {
             </div>
           </div>
           {/* message */}
-          <div>
-            <textarea name="message" id=""
-              value={formData.message}
-              onChange={handleChange}
-            ></textarea>
+          <div className='message-container'>
+            <div className='message-box'>
+              <textarea
+                ref={textareaRef}
+                name="message"
+                id=""
+                placeholder='Message'
+                value={formData.message}
+                onChange={handleChange}
+              ></textarea>
+            </div>
+            <p style={{ color: isOverLimit ? 'red' : 'white' }}>
+              {isOverLimit 
+                ? 'You have exceeded the 50 word limit!'
+                : 'Write Your Message in 50 words only. . . '}
+            </p>
           </div>
           {/* Submit Btn */}
           <div className="btn orange-btn"
