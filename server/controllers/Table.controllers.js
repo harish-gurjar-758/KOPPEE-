@@ -1,23 +1,32 @@
-import Table from "../models/Table.models.js";
+import Table from '../models/Table.models.js';
 
-
-export const createTable = async (req, res) => {
+export const addTable = async (req, res) => {
     try {
-        const {
-            tableNumber,
-            status,
-            isAvailable,
-        } = req.body;
+        const { tableNumber, seats, isAvailable } = req.body;
 
+        // Validate input
+        if (!tableNumber || !seats) {
+            return res.status(400).json({ message: 'Table number and seats are required.' });
+        }
+
+        // Check if tableNumber already exists
+        const existingTable = await Table.findOne({ tableNumber });
+        if (existingTable) {
+            return res.status(409).json({ message: 'Table with this number already exists.' });
+        }
+
+        // Create new table
         const newTable = new Table({
             tableNumber,
-            status,
-            isAvailable,
+            seats,
+            isAvailable: isAvailable ?? true
         });
 
         await newTable.save();
-        res.status(201).json({ message: 'Create a Table succefully', table: newTable });
+
+        res.status(201).json({ message: 'Table added successfully', table: newTable });
     } catch (error) {
-        res.status(500).json({ message: "Error in Creating a Table", error: error.message });
+        console.error('Error adding table:', error);
+        res.status(500).json({ message: 'Internal server error' });
     }
 };

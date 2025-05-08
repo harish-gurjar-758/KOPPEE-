@@ -30,6 +30,7 @@ const reservationSchema = new mongoose.Schema({
     tableNumber: {
         type: Number,
         default: null,
+        requested: false,
     },
     status: {
         type: String,

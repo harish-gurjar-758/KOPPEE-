@@ -13,12 +13,13 @@ export const createReservation = async (req, res) => {
             date,
             time,
             message,
+            tablenumber,
         } = req.body;
 
         // Find available table
         const availableTable = await Table.findOne({ isAvailable: true, seats: { $gte: person } });
         let status = "waiting";
-        let tablenumber = null;
+        // let tablenumber = null;
 
         if (availableTable) {
             availableTable.isAvailable = false;

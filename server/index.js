@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db.js';
 import reservationTable from './routes/reservation.routes.js'
-import { createTable } from './controllers/Table.controllers.js';
+import addTable from './routes/table.routes.js';
 
 dotenv.config();
 const app = express();
@@ -17,7 +17,7 @@ app.use(cors());
 
 // Routes 
 app.use('/api/reservation', reservationTable);
-app.use('api/table/', createTable);
+app.use('api/table', addTable);
 
 // Start Server 
 const PORT = process.env.PORT || 5000;
