@@ -26,8 +26,17 @@ const reservationSchema = new mongoose.Schema({
     },
     message: {
         type: String,
+    },
+    tableNumber: {
+        type: Number,
+        default: null,
+    },
+    status: {
+        type: String,
+        enum: ['pending', 'confirmed', 'waiting'],
+        default: 'pending'
     }
 });
 
-const Reservation= mongoose.model('Reservation', reservationSchema);
+const Reservation = mongoose.model('Reservation', reservationSchema);
 export default Reservation;
