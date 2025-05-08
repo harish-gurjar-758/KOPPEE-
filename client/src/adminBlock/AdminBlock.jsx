@@ -4,6 +4,7 @@ import Reservation from './pages/Reservation/Reservation';
 import Order from './pages/Order/Order';
 import { useLocation } from 'react-router-dom';
 import AddNewReservation from './pages/Reservation/AddNewReservation';
+import AddNewTable from './pages/Table/AddNewTable';
 
 export default function AdminBlock() {
     const location = useLocation();
@@ -14,6 +15,9 @@ export default function AdminBlock() {
         <div className='AdminBlock'>
             {/* Dashbord Section */}
             {section === "dashboard" && <Dashboard />}
+
+            {/* Table */}
+            {section === "add-new-table" && <AddNewTable />}
 
             {/* Reservation Section */}
             {section === "reservation" && <Reservation />}

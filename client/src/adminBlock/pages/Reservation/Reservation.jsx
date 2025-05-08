@@ -36,11 +36,21 @@ export default function Reservation() {
             {/* Header */}
             <div className='admin-header'>
                 <h2>Reservation</h2>
-                <div
-                    className="btn orange-btn"
-                    onClick={() => navigate('/coffee-shop/admin-block/?section=add-new-reservation')}
-                >
-                    Add New Reservation
+
+                <div className="btn-group">
+                    <div
+                        className="btn orange-btn"
+                        onClick={() => navigate('/coffee-shop/admin-block/?section=add-new-reservation')}
+                    >
+                        Add New Reservation
+                    </div>
+
+                    <div
+                        className="btn btn-add"
+                        onClick={()=> navigate('/coffee-shop/admin-block/?section=add-new-table')}
+                    >
+                        Add a new Table
+                    </div>
                 </div>
             </div>
 
@@ -61,23 +71,30 @@ export default function Reservation() {
                     <tbody>
                         {reserveTable.map((item, index) => (
                             <tr key={item._id || item.id}>
-                                <td>{index+1}</td>
+                                <td>{index + 1}</td>
                                 <td>{item.name}</td>
                                 <td>{item.person}</td>
                                 <td className='status-box'>
-                                    <div className='status-reserved' >
-                                        confirm
-                                        <IoCheckmarkDoneSharp />
-                                    </div>
-                                    <div className='status-wating'>
-                                        Wating
-                                        <BiSolidStopwatch />
-                                    </div>
-                                    <div className='status-padding'>
-                                        Padding
-                                        . . . 
-                                    </div>
+                                    {item.status === 'confirmed' && (
+                                        <div className='status-reserved'>
+                                            Confirm
+                                            <IoCheckmarkDoneSharp />
+                                        </div>
+                                    )}
+                                    {item.status === 'waiting' && (
+                                        <div className='status-wating'>
+                                            Waiting
+                                            <BiSolidStopwatch />
+                                        </div>
+                                    )}
+                                    {item.status === 'pending' && (
+                                        <div className='status-padding'>
+                                            Pending
+                                            . . .
+                                        </div>
+                                    )}
                                 </td>
+
                                 <td>{formatDateToDMY(item.date)}</td>
                                 <td>{item.time}</td>
                                 <td className='action-box'>
