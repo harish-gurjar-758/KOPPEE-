@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FcOk } from "react-icons/fc";
 import { FcMediumPriority } from "react-icons/fc";
 import { FcHighPriority } from "react-icons/fc";
+import { getAllReservations } from '../../../Apis/Apis';
+import { useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
+    const [reserveTable, setReserveTable] = useState([]);
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const reservedTable = async () => {
+            try {
+                const data = await getAllReservations();
+                setReserveTable(data)
+            } catch (error) {
+                console.error("Error fetching Reserved Tables : ", error);
+            }
+        };
+
+        reservedTable();
+    }, [])
     return (
         <div className='Dashboard'>
             <div className='dashboard-left'>
@@ -33,7 +50,11 @@ export default function Dashboard() {
                 <div className="today-reservations">
                     <div className="header">
                         <h2>Reservation</h2>
-                        <p>view all</p>
+                        <p
+                            onClick={() => navigate('/coffee-shop/admin-block/?section=reservation')}
+                        >
+                            view all
+                        </p>
                     </div>
                     <table border='0'>
                         <thead>
@@ -46,13 +67,15 @@ export default function Dashboard() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>John Doe</td>
-                                <td>10:00 AM</td>
-                                <td>07/05/2025</td>
-                                <td>Confirmed</td>
-                            </tr>
+                            {reserveTable.map((item, index) => (
+                                <tr key={item._id}>
+                                    <td>{index + 1}</td>
+                                    <td>{item.name}</td>
+                                    <td>{item.time}</td>
+                                    <td>{item.date}</td>
+                                    <td>Confirmed</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
