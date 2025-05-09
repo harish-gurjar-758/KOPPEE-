@@ -3,7 +3,6 @@
 # dependencies
 # -- Client -- 
 /client/node_modules
-/client/src/apis/apis.js
 
 # -- Server --
 /server/node_modules

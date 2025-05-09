@@ -3,13 +3,45 @@ import axios from 'axios';
 const BaseUrl = 'http://localhost:8080/api';
 
 // -----------
+// AdminBlock
+// -----------
+
+// Add a new Employee
+export const addEmployee = async (data) => {
+  try {
+    const response = await axios.post(`${BaseUrl}/employee`, data);
+    return response.data;
+  } catch (error) {
+    console.error('Add a Employee Error', error);
+    throw error;
+  }
+};
+
+// Login a Employee
+export const loginEmployee = async (data) => {
+  try {
+    const response = await axios.post(`${BaseUrl}/employee`, data);
+    return response.data;
+  } catch (error) {
+    console.error("Error in Employee Login", error);
+    throw error;
+  }
+}
+
+// Tamprory Block a Employee
+
+// Delete a Employee
+
+// Delete a Employee
+
+// -----------
 // Table
 // ----------
 
 // Add a new table
 export const addTable = async (formData) => {
   try {
-    const response = await axios.post('/api/table', formData);
+    const response = await axios.post(`${BaseUrl}/table`, formData);
     return response.data; // Handle response
   } catch (error) {
     console.error('Add Table error:', error);
