@@ -2,27 +2,27 @@ import mongoose from "mongoose";
 const reservationSchema = new mongoose.Schema({
     name: {
         type: String,
-        requested: true,
+        required: true,
     },
     email: {
         type: String,
-        requested: true,
+        required: true,
     },
     phone: {
         type: Number,
-        requested: true,
+        required: true,
     },
     person: {
         type: Number,
-        requested: true,
+        required: true,
     },
     date: {
         type: Date,
-        requested: true,
+        required: true,
     },
     time: {
         type: String,
-        requested: true,
+        required: true,
     },
     message: {
         type: String,
@@ -30,7 +30,7 @@ const reservationSchema = new mongoose.Schema({
     tableNumber: {
         type: Number,
         default: null,
-        requested: false,
+        required: false,
     },
     status: {
         type: String,

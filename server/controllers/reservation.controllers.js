@@ -13,7 +13,7 @@ export const createReservation = async (req, res) => {
             date,
             time,
             message,
-            tablenumber,
+            tableNumber,
         } = req.body;
 
         // Find available table
@@ -25,7 +25,7 @@ export const createReservation = async (req, res) => {
             availableTable.isAvailable = false;
             await availableTable.save();
             status = "confirmed";
-            tablenumber = availableTable.tablenumber;
+            tableNumber = availableTable.tableNumber;
         }
 
         const newReservation = new Reservation({
@@ -37,7 +37,7 @@ export const createReservation = async (req, res) => {
             time,
             message,
             status,
-            tablenumber
+            tableNumber
         });
         await newReservation.save();
 
