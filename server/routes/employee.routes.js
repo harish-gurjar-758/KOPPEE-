@@ -1,5 +1,5 @@
 import express from 'express';
-import { addEmployee, blockEmployee, deleteEmployee } from '../controllers/Employee.controller.js';
+import { addEmployee, blockEmployee, deleteEmployee, loginEmployee } from '../controllers/Employee.controller.js';
 
 const router = express.Router();
 
@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/', addEmployee);
 
 // Router to Login a Employee
-
+router.post('/login', loginEmployee)
 
 // Router to delete a Employee
 router.delete('/:id', deleteEmployee);
