@@ -20,7 +20,7 @@ export const addEmployee = async (data) => {
 // Login a Employee
 export const loginEmployee = async (data) => {
   try {
-    const response = await axios.post(`${BaseUrl}/employee`, data);
+    const response = await axios.post(`${BaseUrl}/employee/login`, data);
     return response.data;
   } catch (error) {
     console.error("Error in Employee Login", error);
@@ -29,6 +29,15 @@ export const loginEmployee = async (data) => {
 }
 
 // Tamprory Block a Employee
+export const tamproryBlockEmployee = async (data) => {
+  try {
+    const response = await axios.patch(`${BaseUrl}/employee/blocked/:id`, data);
+    return response.data
+  } catch (error) {
+    console.error("Error in Tamprory Block a Employee", error);
+    throw error;
+  }
+}
 
 // Delete a Employee
 
