@@ -1,10 +1,9 @@
 import Employee from "../models/Employee.modules.js";
-import bcrypt from 'bcryptjs'; // Assuming passwords are hashed
-import jwt from 'jsonwebtoken'; // Optional: For authentication token
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET;
-
-//  Add new Employee in System
+const JWT_SECRET = process.env.JWT_SECRET || 'defaultsecret'; // fallback for dev
+// ✅ Add new Employee with secure password handling
 export const addEmployee = async (req, res) => {
     try {
         const {
@@ -19,6 +18,21 @@ export const addEmployee = async (req, res) => {
             blockedUntil
         } = req.body;
 
+        // Basic validation (optional but recommended)
+        if (!employeeEmail || !password || !employeeName) {
+            return res.status(400).json({ message: "Required fields are missing" });
+        }
+
+        // Check if email is already registered
+        const existingEmployee = await Employee.findOne({ employeeEmail });
+        if (existingEmployee) {
+            return res.status(409).json({ message: "Employee with this email already exists" });
+        }
+
+        // ✅ Securely hash the password using bcrypt
+        const saltRounds = 12; // More secure than 10 (slightly slower)
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
         const newEmployee = new Employee({
             employeeName,
             employeeId,
@@ -26,18 +40,29 @@ export const addEmployee = async (req, res) => {
             employeePhoto,
             employeePhone,
             employeeEmail,
-            password,
+            password: hashedPassword,
             shopBranchId,
             blockedUntil
         });
-        await newEmployee.save();
-        res.staus(201).json({ message: "Succefully add new Employee!", employee: newEmployee });
-    } catch (error) {
-        res.status(500).json({ message: "Error in Add new Employee", error: error.message });
-    }
-}
 
-// Login a Employe in AdminNlock
+        await newEmployee.save();
+
+        // Never return the password in any response
+        const { password: _, ...employeeData } = newEmployee._doc;
+
+        res.status(201).json({
+            message: "Successfully added new Employee!",
+            employee: employeeData
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "Error adding new employee",
+            error: error.message
+        });
+    }
+};
+
+// ✅ Login an Employee
 export const loginEmployee = async (req, res) => {
     const { employeeEmail, password } = req.body;
 
@@ -78,7 +103,7 @@ export const loginEmployee = async (req, res) => {
     }
 };
 
-// Router for delete a Employee
+// ✅ Delete an Employee
 export const deleteEmployee = async (req, res) => {
     try {
         const { id } = req.params;
@@ -94,14 +119,18 @@ export const deleteEmployee = async (req, res) => {
     }
 };
 
-// Router for Block an employee for a specified number of days
+// ✅ Block an Employee for specified days
 export const blockEmployee = async (req, res) => {
     try {
         const { id } = req.params;
-        const { days } = req.body; // e.g., { "days": 3 }
+        const { days } = req.body;
+
+        if (!days || isNaN(days)) {
+            return res.status(400).json({ message: "Invalid number of days" });
+        }
 
         const blockUntil = new Date();
-        blockUntil.setDate(blockUntil.getDate() + days);
+        blockUntil.setDate(blockUntil.getDate() + parseInt(days));
 
         const updated = await Employee.findByIdAndUpdate(
             id,
