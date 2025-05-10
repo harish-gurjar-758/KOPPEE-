@@ -4,7 +4,7 @@ import { SlHandbag } from "react-icons/sl";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import { LuLayoutDashboard } from "react-icons/lu";
-import { PiArmchairFill } from "react-icons/pi";
+import { PiArmchairFill, PiBowlFoodBold } from "react-icons/pi";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { RxCross2 } from "react-icons/rx";
 
@@ -68,35 +68,35 @@ export default function NavBar() {
             {menuOpen && (
                 <div className="responsive-link-container">
                     <Link to='/' className='link'
-                    onClick={handleLinkClick}
+                        onClick={handleLinkClick}
                     >
                         <h4>Home</h4></Link>
                     <Link to='/about' className='link'
-                    onClick={handleLinkClick}
+                        onClick={handleLinkClick}
                     >
                         <h4>About</h4></Link>
                     <Link className="link"
-                    onClick={handleLinkClick}
+                        onClick={handleLinkClick}
                     >
                         <h4>Menu</h4></Link>
                     <Link className="link"
-                    onClick={handleLinkClick}
+                        onClick={handleLinkClick}
                     >
                         <h4>Order</h4></Link>
                     <Link className="link"
-                    onClick={handleLinkClick}
+                        onClick={handleLinkClick}
                     >
                         <h4>Offer</h4></Link>
                     <Link className="link"
-                    onClick={handleLinkClick}
+                        onClick={handleLinkClick}
                     >
                         <h4>Shops</h4></Link>
                     <Link className='link' to='/reservation'
-                    onClick={handleLinkClick}
+                        onClick={handleLinkClick}
                     >
                         Reservation</Link>
                     <Link className="link"
-                    onClick={handleLinkClick}
+                        onClick={handleLinkClick}
                     >
                         <h4>Contact</h4></Link>
                 </div>
@@ -113,9 +113,19 @@ export default function NavBar() {
                         <PiArmchairFill />
                         <h5> Reservation</h5>
                     </div>
-                    <div className="layout-link-btn" onClick={() => navigate('/coffee-shop/admin-block/?section=order')}>
+                    <div
+                        className="layout-link-btn"
+                        onClick={() => navigate('/coffee-shop/admin-block/?section=order')}
+                    >
                         <SlHandbag />
                         <h5> Orders</h5>
+                    </div>
+                    <div
+                        className="layout-link-btn"
+                        onClick={() => navigate('/coffee-shop/admin-block/?section=food')}
+                    >
+                        <PiBowlFoodBold />
+                        <h5>Food</h5>
                     </div>
                 </div>
             )}

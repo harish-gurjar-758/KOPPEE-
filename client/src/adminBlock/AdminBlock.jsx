@@ -7,6 +7,8 @@ import AddNewReservation from './pages/Reservation/AddNewReservation';
 import AddNewTable from './pages/Table/AddNewTable';
 import AddNewEmployee from './pages/Employee/AddNewEmployee';
 import Login from './pages/Employee/Login';
+import FoodList from './pages/Food/FoodList';
+import AddNewFood from './pages/Food/AddNewFood';
 
 export default function AdminBlock() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -37,6 +39,10 @@ export default function AdminBlock() {
 
             {/* Order Section */}
             {section === "order" && <Order />}
+
+            {/* Food Section */}
+            {section === "food" && <FoodList />}
+            {section === "add-new-food" && <AddNewFood />}
         </div>
     );
 }
