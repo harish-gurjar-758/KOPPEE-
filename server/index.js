@@ -5,6 +5,7 @@ import connectDB from './config/db.js';
 import reservationTable from './routes/reservation.routes.js'
 import addTable from './routes/table.routes.js';
 import employee from './routes/employee.routes.js'
+import food from './routes/food.routes.js';
 
 dotenv.config();
 const app = express();
@@ -20,6 +21,7 @@ app.use(cors());
 app.use('/api/reservation', reservationTable);
 app.use('/api/table', addTable);
 app.use('/api/employee', employee);
+app.use('/api/food', food);
 
 // Start Server 
 const PORT = process.env.PORT || 5000;
