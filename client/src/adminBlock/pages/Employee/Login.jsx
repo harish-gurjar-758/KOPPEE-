@@ -24,32 +24,43 @@ export default function Login({ onLoginSuccess }) {
 
     return (
         <div className='Login'>
-            <h2>Hallo,</h2>
-            <h2>Welcome Back</h2>
-            <p>Hey, welcome back to your special place.</p>
+            <div className='login-container'>
+                <div className='login-box'>
+                    <h2>Hallo,</h2>
+                    <h2>Welcome Back</h2>
+                    <p>Hey, welcome back to your special place.</p>
 
-            <div className="input-box">
-                <input
-                    type="email"
-                    placeholder='Email'
-                    name="employeeEmail"
-                    value={formData.employeeEmail}
-                    onChange={handleChange}
-                />
+                    <div className="input-box">
+                        <input
+                            type="email"
+                            placeholder='Email'
+                            name="employeeEmail"
+                            value={formData.employeeEmail}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="input-box">
+                        <input
+                            type="password"
+                            placeholder='Password'
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
+
+                    <div
+                        className="btn btn-add"
+                        onClick={handleSubmit}
+                        style={{ marginTop: "10px", height: "45px" }}
+                    >Sign In</div>
+
+                </div>
+                <div className="login-side-box">
+                </div>
             </div>
-            <div className="input-box">
-                <input
-                    type="password"
-                    placeholder='Password'
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
-            </div>
 
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-
-            <div className="btn" onClick={handleSubmit}>Sign In</div>
         </div>
     );
 }
