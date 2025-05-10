@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Reservation from './pages/Reservation/Reservation';
 import Order from './pages/Order/Order';
 import { useLocation } from 'react-router-dom';
 import AddNewReservation from './pages/Reservation/AddNewReservation';
 import AddNewTable from './pages/Table/AddNewTable';
+import AddNewEmployee from './pages/Employee/AddNewEmployee';
 
 export default function AdminBlock() {
     const location = useLocation();
@@ -15,6 +16,9 @@ export default function AdminBlock() {
         <div className='AdminBlock'>
             {/* Dashbord Section */}
             {section === "dashboard" && <Dashboard />}
+
+            {/* Employee Section */}
+            {section === "add-new-employee" && <AddNewEmployee />}
 
             {/* Table */}
             {section === "add-new-table" && <AddNewTable />}

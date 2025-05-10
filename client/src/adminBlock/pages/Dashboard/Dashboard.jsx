@@ -80,6 +80,11 @@ export default function Dashboard() {
                     </table>
                 </div>
             </div>
+            <div className="dashboard-right">
+                <div className="btn-group">
+                    <div className="btn btn-add" onClick={()=>navigate('/coffee-shop/admin-block/?section=add-new-employee')}>Add A New Employee</div>
+                </div>
+            </div>
         </div>
     )
 }
