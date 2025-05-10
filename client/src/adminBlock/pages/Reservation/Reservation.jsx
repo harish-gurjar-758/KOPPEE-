@@ -32,7 +32,7 @@ export default function Reservation() {
     }, []);
 
     return (
-        <div>
+        <div className='section'>
             {/* Header */}
             <div className='admin-header'>
                 <h2>Reservation</h2>

@@ -370,6 +370,19 @@
   border-top-right-radius: 6px;
 }
 
+.AdminBlock .section {
+  width: 96%;
+  padding-top: 30px;
+}
+
+.AdminBlock .admin-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
 .AdminBlock .Dashboard {
   width: 100%;
   display: flex;
@@ -428,12 +441,6 @@
 }
 
 
-.AdminBlock .admin-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
 
 .AdminBlock .admin-header .btn-add {
   padding: 0px 9px;
@@ -755,6 +762,15 @@ td {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  position: relative;
+  top: 0px;
+
+  p {
+    font-size: 12px;
+    position: absolute;
+    bottom: -20px;
+  }
 
   input {
     width: 95%;

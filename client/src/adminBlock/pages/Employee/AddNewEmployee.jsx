@@ -48,7 +48,7 @@ export default function AddNewEmployee() {
     };
 
     return (
-        <div className='AddNewEmployee'>
+        <div className='section'>
             <div className="admin-header">
                 <h2>Add A New Employee</h2>
                 <div

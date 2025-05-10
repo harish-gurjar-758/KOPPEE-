@@ -44,6 +44,38 @@ export const tamproryBlockEmployee = async (data) => {
 // Delete a Employee
 
 // -----------
+// Food | Menu
+// -----------
+
+// Add a new Food
+export const addFood = async (data) => {
+  try {
+    const response = await axios.post(`${BaseUrl}/food`, data);
+    return response.data;
+  } catch (error) {
+    console.error('Add Food Error', error);
+    throw error;
+  }
+};
+
+// Get all food item
+export const getAllFood = async () => {
+  try {
+    const response = await axios.get(`${BaseUrl}/food`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching foods:', error);
+    throw error;
+  }
+};
+
+// Update a food item by id
+export const updateFoodById = async (id) => {
+  const response = await axios.put(`${BaseUrl}/food/${id}`);
+  return response.data
+}
+
+// -----------
 // Table
 // ----------
 
