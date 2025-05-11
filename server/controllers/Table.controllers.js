@@ -24,6 +24,6 @@ export const addTable = async (req, res) => {
     res.status(201).json({ message: 'Table added successfully', table: newTable });
   } catch (error) {
     console.error('Error adding table:', error);
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: `Failed to add table: ${error.message}` });
   }
 };

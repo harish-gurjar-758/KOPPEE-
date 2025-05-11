@@ -26,7 +26,7 @@ export default function AddNewTable() {
     try {
       const { tableNumber, seats, isAvailable } = formData;
 
-      if (!tableNumber || !seats || isAvailable === '') {
+      if (!tableNumber || !seats || !isAvailable === '') {
         alert("Please fill in all required fields.");
         return;
       }
