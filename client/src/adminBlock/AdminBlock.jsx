@@ -9,6 +9,7 @@ import AddNewEmployee from './pages/Employee/AddNewEmployee';
 import Login from './pages/Employee/Login';
 import FoodList from './pages/Food/FoodList';
 import AddNewFood from './pages/Food/AddNewFood';
+import UpdateFood from './pages/Food/UpdateFood';
 
 export default function AdminBlock() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -43,6 +44,7 @@ export default function AdminBlock() {
             {/* Food Section */}
             {section === "food" && <FoodList />}
             {section === "add-new-food" && <AddNewFood />}
+            {section === "update-food" && <UpdateFood id="id" />}
         </div>
     );
 }

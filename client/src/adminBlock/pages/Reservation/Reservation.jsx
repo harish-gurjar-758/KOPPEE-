@@ -5,7 +5,7 @@ import { PiEyesBold } from "react-icons/pi";
 import { MdDeleteForever } from "react-icons/md";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import { BiSolidStopwatch } from "react-icons/bi";
-import ReactLoading from 'react-loading';
+// import ReactLoading from 'react-loading';
 
 // Format date to DD/MM/YYYY
 function formatDateToDMY(dateStr) {

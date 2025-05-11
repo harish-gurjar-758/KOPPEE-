@@ -78,10 +78,14 @@ export default function FoodList() {
                                 <td>{item.foodPrice}</td>
                                 <td>{item.foodType}</td>
                                 <td className='action-box'>
-                                    <div className="btn orange-btn">
+                                    <div
+                                        className="btn orange-btn">
                                         <PiEyesBold />
                                     </div>
-                                    <div className="btn btn-add">
+                                    <div
+                                        className="btn btn-add"
+                                        onClick={() => navigate(`/coffee-shop/admin-block/?section=update-food&id=${item._id}`)}
+                                    >
                                         <BiEdit />
                                     </div>
                                     <div className="btn btn-discard">

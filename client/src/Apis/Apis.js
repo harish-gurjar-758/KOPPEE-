@@ -12,12 +12,12 @@ export const addEmployee = async (data) => {
     const response = await axios.post(`${BaseUrl}/employee`, data);
     return response.data;
   } catch (error) {
-    console.error('Add a Employee Error', error);
+    console.error('Add Employee Error', error);
     throw error;
   }
 };
 
-// Login a Employee
+// Login an Employee
 export const loginEmployee = async (data) => {
   try {
     const response = await axios.post(`${BaseUrl}/employee/login`, data);
@@ -26,22 +26,18 @@ export const loginEmployee = async (data) => {
     console.error("Error in Employee Login", error);
     throw error;
   }
-}
+};
 
-// Tamprory Block a Employee
-export const tamproryBlockEmployee = async (data) => {
+// Temporarily Block an Employee
+export const tamproryBlockEmployee = async (id, data) => {
   try {
-    const response = await axios.patch(`${BaseUrl}/employee/blocked/:id`, data);
-    return response.data
+    const response = await axios.patch(`${BaseUrl}/employee/blocked/${id}`, data);
+    return response.data;
   } catch (error) {
-    console.error("Error in Tamprory Block a Employee", error);
+    console.error("Error in Temporary Block of Employee", error);
     throw error;
   }
-}
-
-// Delete a Employee
-
-// Delete a Employee
+};
 
 // -----------
 // Food | Menu
@@ -58,7 +54,7 @@ export const addFood = async (data) => {
   }
 };
 
-// Get all food item
+// Get all food items
 export const getAllFood = async () => {
   try {
     const response = await axios.get(`${BaseUrl}/food`);
@@ -69,31 +65,90 @@ export const getAllFood = async () => {
   }
 };
 
-// Update a food item by id
-export const updateFoodById = async (id) => {
-  const response = await axios.put(`${BaseUrl}/food/${id}`);
-  return response.data
-}
+// Update a food item by ID
+export const updateFoodById = async (id, data) => {
+  try {
+    const response = await axios.put(`${BaseUrl}/food/${id}`, data);
+    return response.data;
+  } catch (error) {
+    console.error(`Error updating food with ID ${id}:`, error);
+    throw error;
+  }
+};
+
+// Get a single food item by ID
+export const getOneFoodById = async (id) => {
+  try {
+    const response = await axios.get(`${BaseUrl}/food/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error getting food by ID ${id}:`, error);
+    throw error;
+  }
+};
+
+// Get all discounted food items
+export const getAllDescountFood = async () => {
+  try {
+    const response = await axios.get(`${BaseUrl}/food/discounted/list`);
+    return response.data;
+  } catch (error) {
+    console.error("Error getting the discounted food list", error);
+    throw error;
+  }
+};
+
+// Get relative food items (same type)
+export const getRelativeFoods = async (id) => {
+  try {
+    const response = await axios.get(`${BaseUrl}/food/relative/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error getting relative foods', error);
+    throw error;
+  }
+};
+
+// Add a rating to a food item
+export const addRatingToFood = async (id, ratingData) => {
+  try {
+    const response = await axios.post(`${BaseUrl}/food/${id}/ratings`, ratingData);
+    return response.data;
+  } catch (error) {
+    console.error('Error adding rating to food', error);
+    throw error;
+  }
+};
+
+// Get total and average rating of a food item
+export const getFoodRatings = async (id) => {
+  try {
+    const response = await axios.get(`${BaseUrl}/food/${id}/ratings`);
+    return response.data;
+  } catch (error) {
+    console.error('Error getting ratings of food', error);
+    throw error;
+  }
+};
 
 // -----------
 // Table
-// ----------
+// -----------
 
 // Add a new table
 export const addTable = async (formData) => {
   try {
     const response = await axios.post(`${BaseUrl}/table`, formData);
-    return response.data; // Handle response
+    return response.data;
   } catch (error) {
     console.error('Add Table error:', error);
-    throw error; // Re-throw the error for handling in the calling component
+    throw error;
   }
 };
 
-
-// ---------
-//  Reservation a Table 
-// ----------
+// -----------
+// Reservation
+// -----------
 
 // Create a new reservation
 export const createReservation = async (reservationData) => {
