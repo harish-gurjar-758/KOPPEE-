@@ -911,7 +911,7 @@ td {
   }
 }
 
-.menu-page .menu-food-type-group{
+.menu-page .menu-food-type-group {
   width: 100%;
   height: 200px;
   display: flex;
@@ -919,7 +919,7 @@ td {
   justify-content: center;
   gap: 50px;
 
-  .card{
+  .card {
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -932,14 +932,14 @@ td {
     gap: 5px;
     cursor: pointer;
 
-    img{
+    img {
       width: 50px;
       height: 50px;
       border-radius: 50%;
       background-color: white;
     }
 
-    h3{
+    h3 {
       font-size: 10px;
       font-variant: small-caps;
     }
@@ -962,7 +962,7 @@ td {
   background-color: #1d1d1d;
   border-radius: 3px;
   box-shadow: #1d1d1d 1px 0 10px;
-
+  cursor: pointer;
 }
 
 .menu-page .card-group .card .card-top-box {
@@ -1013,5 +1013,28 @@ td {
     .btn {
       background-color: green;
     }
+  }
+}
+
+/* --------- */
+/* Food Detailed Section || Page */
+/* ----------- */
+
+.FoodDetailed{
+  width: 100%;
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.FoodDetailed .header{
+  width: 100%;
+  h5{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 50px;
   }
 }

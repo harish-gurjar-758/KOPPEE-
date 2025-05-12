@@ -5,6 +5,7 @@ import Home from './components/Pages/Home';
 import Reservation from './components/Pages/Reservation';
 import AdminBlock from './adminBlock/AdminBlock';
 import Menu from './components/Pages/Menu';
+import FoodDetailed from './components/Pages/FoodDetailed';
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
           <Route path='/reservation' element={<Reservation />} />
           <Route path='/coffee-shop/admin-block/' element={<AdminBlock />} />
           <Route path="/menu" element={<Menu />} />
-          {/* <Route path="/about" element={<About />} /> */}
+          <Route path="/food-detailed-section/:id" element={<FoodDetailed />} />
           {/* <Route path="/contact" element={<Contact />} /> */}
         </Routes>
       </div>

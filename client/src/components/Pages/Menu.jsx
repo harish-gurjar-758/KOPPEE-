@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getAllFood, getAllFoodCategory } from '../../Apis/Apis';
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // ⭐ Helper to generate star icons
 const renderStars = (rating) => {
@@ -16,10 +16,11 @@ const renderStars = (rating) => {
             {[...Array(emptyStars)].map((_, i) => <FaRegStar key={`empty-${i}`} color="orange" />)}
         </>
     );
-}; 
+};
 
 // Main Component
 export default function Menu() {
+    const navigate = useNavigate();
     const location = useLocation();
     const currentPath = location.pathname;
     const [foodList, setFoodList] = useState([]);
@@ -95,7 +96,11 @@ export default function Menu() {
             {/* 🍽 Food Items */}
             <div className='card-group'>
                 {filteredFoodList.map((item, index) => (
-                    <div key={index} className='card'>
+                    <div
+                        key={index}
+                        className='card'
+                        onClick={() => navigate(`/food-detailed-section/${item._id}`)}
+                    >
                         <div className='card-top-box'>
                             <div className='image'>
                                 <img src={item.foodImageUrl} alt={item.foodName} />
