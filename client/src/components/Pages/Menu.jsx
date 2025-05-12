@@ -3,7 +3,7 @@ import { getAllFood, getAllFoodCategory } from '../../Apis/Apis';
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { useLocation } from 'react-router-dom';
 
-// ⭐ Helper to generate star icons:
+// ⭐ Helper to generate star icons
 const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 >= 0.5;
@@ -18,7 +18,7 @@ const renderStars = (rating) => {
     );
 };
 
-// ✅ Main Function Component
+// ✅ Main Component
 export default function Menu() {
     const location = useLocation();
     const currentPath = location.pathname;
@@ -32,7 +32,7 @@ export default function Menu() {
                 const response = await getAllFoodCategory();
                 setFoodCategory(response);
             } catch (error) {
-                console.error("Error Fetching Food Category List : ", error);
+                console.error("Error Fetching Food Category List:", error);
             }
         };
 
@@ -41,7 +41,7 @@ export default function Menu() {
                 const response = await getAllFood();
                 setFoodList(response);
             } catch (error) {
-                console.error("Error fetching Food List : ", error);
+                console.error("Error fetching Food List:", error);
             }
         };
 
@@ -53,9 +53,9 @@ export default function Menu() {
         setSelectedCategory(categoryName);
     };
 
-    // ✅ Filtered food items based on selected category
+    // ✅ Corrected filtering logic
     const filteredFoodList = selectedCategory
-        ? foodList.filter(item => item.foodCategory === selectedCategory)
+        ? foodList.filter(item => item.foodType === selectedCategory)
         : foodList;
 
     return (
@@ -67,7 +67,7 @@ export default function Menu() {
                 </div>
             </div>
 
-            {/* 🔘 Category Buttons */}
+            {/* 🔘 Food Categories */}
             <div className='menu-food-type-group'>
                 {/* All Category */}
                 <div
@@ -92,7 +92,7 @@ export default function Menu() {
                 ))}
             </div>
 
-            {/* 🍔 Food Items */}
+            {/* 🍽 Food Items */}
             <div className='card-group'>
                 {filteredFoodList.map((item, index) => (
                     <div key={index} className='card'>

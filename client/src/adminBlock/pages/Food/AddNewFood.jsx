@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MdDeleteForever } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom';
-import { addFood } from '../../../Apis/Apis';
+import { addFood, getAllFoodCategory } from '../../../Apis/Apis';
 
 export default function AddNewFood() {
     const navigate = useNavigate();
+    const [foodType, setFoodType] = useState([]);
     const [formData, setFormData] = useState({
         foodName: '',
         foodType: '',
@@ -44,6 +45,19 @@ export default function AddNewFood() {
             alert("Failed to submit Food. Try again.");
         }
     }
+
+    useEffect(() => {
+        const fetchFoodType = async () => {
+            try {
+                const response = await getAllFoodCategory();
+                setFoodType(response);
+            } catch (error) {
+                console.error("Error fetching Food Types List:", error);
+            }
+        };
+
+        fetchFoodType();
+    }, [])
 
     return (
         <div className='section'>
@@ -91,10 +105,9 @@ export default function AddNewFood() {
                                     onChange={handleChange}
                                 >
                                     <option value='null'>Food Type *</option>
-                                    <option value="starter">Starter</option>
-                                    <option value="main">Main</option>
-                                    <option value="dessert">Dessert</option>
-                                    <option value="beverage">Beverage</option>
+                                    {foodType.map((item) => (
+                                        <option value={item.categoryName}>{item.categoryName}</option>
+                                    ))}
                                 </select>
                             </div>
                         </div>
