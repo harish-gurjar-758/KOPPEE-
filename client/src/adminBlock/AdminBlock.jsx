@@ -10,6 +10,8 @@ import Login from './pages/Employee/Login';
 import FoodList from './pages/Food/FoodList';
 import AddNewFood from './pages/Food/AddNewFood';
 import UpdateFood from './pages/Food/UpdateFood';
+import FoodCategoryList from './pages/FoodCategory/FoodCategoryList';
+import AddFoodCategory from './pages/FoodCategory/AddFoodCategory';
 
 export default function AdminBlock() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -40,6 +42,10 @@ export default function AdminBlock() {
 
             {/* Order Section */}
             {section === "order" && <Order />}
+
+            {/* Food Category || Type */}
+            {section === "food-category" && <FoodCategoryList />}
+            {section === "add-food-category" && <AddFoodCategory />}
 
             {/* Food Section */}
             {section === "food" && <FoodList />}

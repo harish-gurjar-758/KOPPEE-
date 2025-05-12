@@ -44,11 +44,57 @@ export const tamproryBlockEmployee = async (id, data) => {
 // ----------
 
 // Add a new food category item
-export const addFoodCategory = async(data)=>{
+export const addFoodCategory = async (data) => {
   try {
-    
+    const response = await axios.post(`${BaseUrl}/food-category/`, data);
+    return response.data;
   } catch (error) {
-    
+    console.error('Add Food Category Error', error);
+    throw error;
+  }
+};
+
+// Get all food category items
+export const getAllFoodCategory = async (data) => {
+  try {
+    const response = await axios.get(`${BaseUrl}/food-category/`, data);
+    return response.data;
+  } catch (error) {
+    console.error("Error Getting the Food Category: ", error);
+    throw error;
+  }
+};
+
+// Get a single food category item by ID
+export const getOneFoodCategoryById = async (id) => {
+  try {
+    const response = await axios.get(`${BaseUrl}/food-category/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error getting food by Id ${id} :`, error);
+    throw error;
+  }
+};
+
+// Update a food category item by ID
+export const updateFoodCategoryById = async (id, data) => {
+  try {
+    const response = await axios.put(`${BaseUrl}/food-category/${id}`, data);
+    return response.data;
+  } catch (error) {
+    console.error(`Error updating food category with Id : ${id}`, error);
+    throw error;
+  }
+};
+
+// Delete a food category item by ID
+export const deleteFoodCategoryById = async (id) => {
+  try {
+    const response = await axios.delete(`${BaseUrl}/food-category/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error deleting food category with ID : ${id}`, error);
+    throw error;
   }
 }
 

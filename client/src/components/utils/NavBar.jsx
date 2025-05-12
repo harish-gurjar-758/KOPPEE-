@@ -128,6 +128,12 @@ export default function NavBar() {
                         <PiBowlFoodBold />
                         <h5>Food</h5>
                     </div>
+                    <div
+                        className="layout-link-btn"
+                        onClick={() => navigate('coffee-shop/admin-block/?section=food-category')}
+                    >
+                        Food Category
+                    </div>
                 </div>
             )}
         </div>
