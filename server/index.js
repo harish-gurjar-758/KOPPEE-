@@ -6,6 +6,7 @@ import reservationTable from './routes/reservation.routes.js'
 import addTable from './routes/table.routes.js';
 import employee from './routes/employee.routes.js'
 import food from './routes/food.routes.js';
+import foodCategory from './routes/foodCategory.routes.js'
 
 dotenv.config();
 const app = express();
@@ -22,6 +23,7 @@ app.use('/api/reservation', reservationTable);
 app.use('/api/table', addTable);
 app.use('/api/employee', employee);
 app.use('/api/food', food);
+app.use('/api/food-category', foodCategory);
 
 // Start Server 
 const PORT = process.env.PORT || 5000;

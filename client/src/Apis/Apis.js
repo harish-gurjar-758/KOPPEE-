@@ -39,6 +39,19 @@ export const tamproryBlockEmployee = async (id, data) => {
   }
 };
 
+// ----------
+// Food Category
+// ----------
+
+// Add a new food category item
+export const addFoodCategory = async(data)=>{
+  try {
+    
+  } catch (error) {
+    
+  }
+}
+
 // -----------
 // Food | Menu
 // -----------

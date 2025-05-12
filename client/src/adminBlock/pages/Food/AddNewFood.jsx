@@ -91,7 +91,10 @@ export default function AddNewFood() {
                                     onChange={handleChange}
                                 >
                                     <option value='null'>Food Type *</option>
-                                    <option value="test">Test</option>
+                                    <option value="starter">Starter</option>
+                                    <option value="main">Main</option>
+                                    <option value="dessert">Dessert</option>
+                                    <option value="beverage">Beverage</option>
                                 </select>
                             </div>
                         </div>

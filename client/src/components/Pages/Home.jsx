@@ -72,7 +72,7 @@ export default function Home() {
   const wordCount = formData.message.trim().split(/\s+/).filter(Boolean).length;
   const isOverLimit = wordCount > 50;
 
-  // reservation Table Sub,it Button
+  // reservation Table Submit Button
   const handleSubmit = async () => {
     try {
       // Basic Validation
@@ -372,7 +372,7 @@ export default function Home() {
               <div className="image">
                 <div>
                   <img src={item.video} alt="" />
-                  <h6></h6>
+                  <h6>hy</h6>
                 </div>
                 <div>
                   <p>{item.commitDate}</p>
