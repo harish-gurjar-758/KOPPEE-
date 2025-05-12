@@ -38,7 +38,7 @@ export default function Menu() {
         <div className='MainContainer menu-page'>
             <div className="menu-page-hero">
                 <div className='menu-page-hero-box'>
-                    <h1>Reserve You Table On Your Date & Time</h1>
+                    <h1>Food Menu</h1>
                     <h5>Coffee{currentPath}</h5>
                 </div>
             </div>
