@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { getAllFood, getAllFoodCategory } from '../../Apis/Apis';
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { useLocation } from 'react-router-dom';
@@ -12,21 +12,21 @@ const renderStars = (rating) => {
     return (
         <>
             {[...Array(fullStars)].map((_, i) => <FaStar key={`full-${i}`} color="orange" />)}
-            {halfStar && <FaStarHalfAlt color="orange" />}
+            {halfStar && <FaStarHalfAlt key="half" color="orange" />}
             {[...Array(emptyStars)].map((_, i) => <FaRegStar key={`empty-${i}`} color="orange" />)}
         </>
     );
 };
 
-// main Function
+// ✅ Main Function Component
 export default function Menu() {
     const location = useLocation();
     const currentPath = location.pathname;
     const [foodList, setFoodList] = useState([]);
     const [foodCategory, setFoodCategory] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState(null);
 
     useEffect(() => {
-
         const fetchFoodCategory = async () => {
             try {
                 const response = await getAllFoodCategory();
@@ -34,7 +34,7 @@ export default function Menu() {
             } catch (error) {
                 console.error("Error Fetching Food Category List : ", error);
             }
-        }
+        };
 
         const fetchFoodList = async () => {
             try {
@@ -43,10 +43,21 @@ export default function Menu() {
             } catch (error) {
                 console.error("Error fetching Food List : ", error);
             }
-        }
+        };
+
         fetchFoodList();
         fetchFoodCategory();
     }, []);
+
+    const handleCategoryClick = (categoryName) => {
+        setSelectedCategory(categoryName);
+    };
+
+    // ✅ Filtered food items based on selected category
+    const filteredFoodList = selectedCategory
+        ? foodList.filter(item => item.foodCategory === selectedCategory)
+        : foodList;
+
     return (
         <div className='MainContainer menu-page'>
             <div className="menu-page-hero">
@@ -55,16 +66,35 @@ export default function Menu() {
                     <h5>Coffee{currentPath}</h5>
                 </div>
             </div>
+
+            {/* 🔘 Category Buttons */}
             <div className='menu-food-type-group'>
+                {/* All Category */}
+                <div
+                    className={`card ${selectedCategory === null ? 'active' : ''}`}
+                    onClick={() => setSelectedCategory(null)}
+                    style={{ cursor: 'pointer' }}
+                >
+                    <h2>All</h2>
+                </div>
+
+                {/* Individual Categories */}
                 {foodCategory.map((item, index) => (
-                    <div className='card' key={index}>
+                    <div
+                        className={`card ${selectedCategory === item.categoryName ? 'active' : ''}`}
+                        key={index}
+                        onClick={() => handleCategoryClick(item.categoryName)}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <img src={item.categoryImageUrl} alt={item.categoryName} />
                         <h3>{item.categoryName}</h3>
                     </div>
                 ))}
             </div>
+
+            {/* 🍔 Food Items */}
             <div className='card-group'>
-                {foodList.map((item, index) => (
+                {filteredFoodList.map((item, index) => (
                     <div key={index} className='card'>
                         <div className='card-top-box'>
                             <div className='image'>
@@ -74,9 +104,7 @@ export default function Menu() {
                                 <h3>{item.foodName}</h3>
                                 <p>{item.foodDescription}</p>
                                 <div>
-                                    <div>
-                                        {renderStars(item.foodRatings)}
-                                    </div>
+                                    <div>{renderStars(item.foodRatings)}</div>
                                     <p>{item.foodRatings}</p>
                                 </div>
                             </div>
@@ -92,5 +120,5 @@ export default function Menu() {
                 ))}
             </div>
         </div>
-    )
+    );
 }
