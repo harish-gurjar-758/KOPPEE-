@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getAllFood } from '../../Apis/Apis';
+import { getAllFood, getAllFoodCategory } from '../../Apis/Apis';
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { useLocation } from 'react-router-dom';
 
@@ -23,7 +23,19 @@ export default function Menu() {
     const location = useLocation();
     const currentPath = location.pathname;
     const [foodList, setFoodList] = useState([]);
+    const [foodCategory, setFoodCategory] = useState([]);
+
     useEffect(() => {
+
+        const fetchFoodCategory = async () => {
+            try {
+                const response = await getAllFoodCategory();
+                setFoodCategory(response);
+            } catch (error) {
+                console.error("Error Fetching Food Category List : ", error);
+            }
+        }
+
         const fetchFoodList = async () => {
             try {
                 const response = await getAllFood();
@@ -33,6 +45,7 @@ export default function Menu() {
             }
         }
         fetchFoodList();
+        fetchFoodCategory();
     }, []);
     return (
         <div className='MainContainer menu-page'>
@@ -43,10 +56,12 @@ export default function Menu() {
                 </div>
             </div>
             <div className='menu-food-type-group'>
-                <div>
-                    <img src="" alt="" />
-                    <h3>Food Type</h3>
-                </div>
+                {foodCategory.map((item, index) => (
+                    <div className='card' key={index}>
+                        <img src={item.categoryImageUrl} alt={item.categoryName} />
+                        <h3>{item.categoryName}</h3>
+                    </div>
+                ))}
             </div>
             <div className='card-group'>
                 {foodList.map((item, index) => (

@@ -55,7 +55,7 @@ export default function FoodCategoryList() {
                                     </div>
                                     <div
                                         className="btn btn-add"
-                                        onClick={() => navigate(`/coffee-shop/admin-block/?section=update-food&id=${item._id}`)}
+                                        // onClick={() => navigate(`/coffee-shop/admin-block/?section=update-food&id=${item._id}`)}
                                     >
                                         <BiEdit />
                                     </div>

@@ -132,7 +132,7 @@ export default function NavBar() {
                         className="layout-link-btn"
                         onClick={() => navigate('coffee-shop/admin-block/?section=food-category')}
                     >
-                        Food Category
+                        <h5>Food Category</h5>
                     </div>
                 </div>
             )}
