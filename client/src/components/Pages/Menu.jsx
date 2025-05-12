@@ -16,7 +16,7 @@ const renderStars = (rating) => {
             {[...Array(emptyStars)].map((_, i) => <FaRegStar key={`empty-${i}`} color="orange" />)}
         </>
     );
-};
+}; 
 
 // Main Component
 export default function Menu() {
