@@ -18,7 +18,7 @@ const renderStars = (rating) => {
     );
 };
 
-// ✅ Main Component
+// Main Component
 export default function Menu() {
     const location = useLocation();
     const currentPath = location.pathname;
@@ -53,7 +53,7 @@ export default function Menu() {
         setSelectedCategory(categoryName);
     };
 
-    // ✅ Corrected filtering logic
+    // Corrected filtering logic
     const filteredFoodList = selectedCategory
         ? foodList.filter(item => item.foodType === selectedCategory)
         : foodList;
@@ -67,7 +67,7 @@ export default function Menu() {
                 </div>
             </div>
 
-            {/* 🔘 Food Categories */}
+            {/* Food Categories */}
             <div className='menu-food-type-group'>
                 {/* All Category */}
                 <div
