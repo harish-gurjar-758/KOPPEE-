@@ -68,29 +68,49 @@ export default function FoodDetailed() {
                 <h2>This is Food Detailed Box</h2>
                 <h5>
                     <FcLeft />
-                    <p onClick={() => navigate('/menu')} style={{ cursor: 'pointer' }}>/ Menu</p>
+                    <p onClick={() => navigate('/menu')} style={{ cursor: 'pointer', textDecoration: 'underline' }}>/ Menu</p>
                     <span>{currentPath}</span>
                 </h5>
             </div>
 
             {/* Food Details Section */}
             <div className="food-details">
-                <div>
-                    <img src={foodDetailedData.foodImageUrl} alt={foodDetailedData.foodName} />
-                </div>
-                <div>
-                    <p><strong>Name:</strong> {foodDetailedData.foodName}</p>
-                    <p><strong>Description:</strong> {foodDetailedData.foodDescription}</p>
-                    <p><strong>Price:</strong> ₹{foodDetailedData.foodPrice}</p>
-                    <p><strong>Size:</strong> | S | M | L |</p>
-                    <p><strong>Type:</strong> {foodDetailedData.foodType}</p>
+                <div className='food-details-top'>
+                    <div className='image'>
+                        <img src={foodDetailedData.foodImageUrl} alt={foodDetailedData.foodName} />
+                    </div>
                     <div>
-                        <strong>Ratings:</strong>
+                        <h3>{foodDetailedData.foodName}</h3>
+                        <p>{foodDetailedData.foodType}</p>
+                        <p>{foodDetailedData.foodDescription}</p>
+                        {
+                            foodDetailedData.foodDescount > 0 ? (
+                                <div>
+                                    <p>
+                                        <span style={{ fontWeight: 'bold', color: 'green' }}>
+                                            ₹{Math.round(foodDetailedData.foodPrice * (1 - foodDetailedData.foodDescount / 100))}
+                                        </span>{' '}
+                                        <span style={{ textDecoration: 'line-through', color: 'gray', marginLeft: '8px' }}>
+                                            ₹{foodDetailedData.foodPrice}
+                                        </span>
+                                    </p>
+                                    <p style={{ color: 'red' }}>{foodDetailedData.foodDescount}% OFF</p>
+                                </div>
+                            ) : (
+                                <p>₹{foodDetailedData.foodPrice}</p>
+                            )
+                        }
+                        <p><strong>Size:</strong> | S | M | L |</p>
                         <div>
-                            {renderStars(foodDetailedData.foodRatings)}
-                            <span>{foodDetailedData.foodRatings}</span>
+                            <strong>Ratings:</strong>
+                            <div>
+                                {renderStars(foodDetailedData.foodRatings)}
+                                <span>{foodDetailedData.foodRatings}</span>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div className='food-details-bottom'>
                 </div>
             </div>
 
@@ -103,14 +123,14 @@ export default function FoodDetailed() {
             </div>
 
             {/* Relative Food Cards */}
-            <div className="card-group">
+            <div className="relative-card-group">
                 {relativeFoodData.length > 0 ? (
                     relativeFoodData.map((item) => (
-                        <div key={item._id} className='card'>
+                        <div key={item._id} className='relative-card'>
                             <div className="image">
                                 <img src={item.foodImageUrl} alt={item.foodName} />
                             </div>
-                            <div>
+                            <div className='details'>
                                 <h4>{item.foodName}</h4>
                                 <h5>₹{item.foodPrice}</h5>
                             </div>

@@ -106,6 +106,7 @@ export const getDiscountedFoods = async (req, res) => {
     }
 };
 
+// Get Relative Food items
 export const getRelativeFoods = async (req, res) => {
     try {
         const { id } = req.params;

@@ -107,15 +107,31 @@ export default function Menu() {
                             </div>
                             <div className='card-details-box'>
                                 <h3>{item.foodName}</h3>
-                                <p>{item.foodDescription}</p>
-                                <div>
-                                    <div>{renderStars(item.foodRatings)}</div>
-                                    <p>{item.foodRatings}</p>
-                                </div>
+                                {/* <p>{item.foodDescription}</p> */}
+                                {
+                                    item.foodDescount > 0 ? (
+                                        <div>
+                                            <h4>
+                                                <span style={{ fontWeight: 'bold', color: 'green' }}>
+                                                    ₹{Math.round(item.foodPrice * (1 - item.foodDescount / 100))}
+                                                </span>{' '}
+                                                <span style={{ textDecoration: 'line-through', color: 'gray', marginLeft: '8px' }}>
+                                                    ₹{item.foodPrice}
+                                                </span>
+                                            </h4>
+                                            <h4 style={{ color: 'red' }}>{item.foodDescount}% OFF</h4>
+                                        </div>
+                                    ) : (
+                                        <h4>₹{item.foodPrice}</h4>
+                                    )
+                                }
                             </div>
                         </div>
                         <div className='card-bottom-box'>
-                            <h4>₹ : {item.foodPrice}/-</h4>
+                            <div>
+                                <div>{renderStars(item.foodRatings)}</div>
+                                <p>{item.foodRatings}</p>
+                            </div>
                             <div className="card-btn-group">
                                 <div className="btn">Add Card</div>
                                 <div className="btn">Order</div>
