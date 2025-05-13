@@ -106,21 +106,30 @@ export const getDiscountedFoods = async (req, res) => {
     }
 };
 
-// Get all relative food items by foodType
 export const getRelativeFoods = async (req, res) => {
     try {
         const { id } = req.params;
 
+        //Find the current food item
         const currentFood = await Food.findById(id);
+
         if (!currentFood) {
             return res.status(404).json({ message: "Food item not found" });
         }
 
+        //Ensure foodType exists and is valid
+        const { foodType } = currentFood;
+        if (!foodType || typeof foodType !== 'string') {
+            return res.status(400).json({ message: "Invalid food type in current food item" });
+        }
+
+        // Find other foods with same foodType, excluding the current one
         const relativeFoods = await Food.find({
-            _id: { $ne: id },
-            foodType: currentFood.foodType
+            _id: { $ne: currentFood._id }, // ensure proper ObjectId comparison
+            foodType: { $regex: new RegExp(`^${foodType}$`, 'i') } // case-insensitive match
         }).limit(6);
 
+        // Return result
         res.status(200).json({
             message: "Relative food items found",
             items: relativeFoods

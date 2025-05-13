@@ -4,7 +4,6 @@ import { getOneFoodById, getRelativeFoods } from '../../Apis/Apis';
 import { FcLeft } from 'react-icons/fc';
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
-
 // ⭐ Helper to generate star icons
 const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
@@ -20,15 +19,14 @@ const renderStars = (rating) => {
     );
 };
 
-// Main Components
 export default function FoodDetailed() {
     const navigate = useNavigate();
     const location = useLocation();
     const currentPath = location.pathname;
     const { id } = useParams();
+
     const [foodDetailedData, setFoodDetailedData] = useState(null);
     const [relativeFoodData, setRelativeFoodData] = useState([]);
-
 
     useEffect(() => {
         const fetchFoodDetails = async () => {
@@ -43,78 +41,84 @@ export default function FoodDetailed() {
         const fetchRelativeFoods = async () => {
             try {
                 const response = await getRelativeFoods(id);
-                setRelativeFoodData(response);
+                console.log("Relative foods API response:", response); // <-- Add this
+                if (response?.items && Array.isArray(response.items)) {
+                    setRelativeFoodData(response.items);
+                } else {
+                    setRelativeFoodData([]);
+                }
             } catch (error) {
                 console.error("Error fetching Relative Food Data:", error);
+                setRelativeFoodData([]);
             }
-        }
+        };
 
-        // only fetch if id is available
-        if (id) fetchFoodDetails();
-        if (id) fetchRelativeFoods();
+        if (id) {
+            fetchFoodDetails();
+            fetchRelativeFoods();
+        }
     }, [id]);
 
-    // Loading state
     if (!foodDetailedData) return <p>Loading...</p>;
 
     return (
         <div className='FoodDetailed'>
+            {/* Header */}
             <div className='header'>
                 <h2>This is Food Detailed Box</h2>
                 <h5>
                     <FcLeft />
-                    <p onClick={() => navigate('/menu')}>/ Menu</p>
-                    {currentPath}
+                    <p onClick={() => navigate('/menu')} style={{ cursor: 'pointer' }}>/ Menu</p>
+                    <span>{currentPath}</span>
                 </h5>
             </div>
 
-            {/* Food Details */}
-            <div>
+            {/* Food Details Section */}
+            <div className="food-details">
                 <div>
+                    <img src={foodDetailedData.foodImageUrl} alt={foodDetailedData.foodName} />
+                </div>
+                <div>
+                    <p><strong>Name:</strong> {foodDetailedData.foodName}</p>
+                    <p><strong>Description:</strong> {foodDetailedData.foodDescription}</p>
+                    <p><strong>Price:</strong> ₹{foodDetailedData.foodPrice}</p>
+                    <p><strong>Size:</strong> | S | M | L |</p>
+                    <p><strong>Type:</strong> {foodDetailedData.foodType}</p>
                     <div>
-                        <img src={foodDetailedData.foodImageUrl} alt={foodDetailedData.foodName} style={{ width: '200px' }} />
-                    </div>
-                    <div>
-                        <p>Name: {foodDetailedData.foodName}</p>
-                        <p>Description: {foodDetailedData.foodDescription}</p>
+                        <strong>Ratings:</strong>
                         <div>
-                            <p>Price: ₹{foodDetailedData.foodPrice}</p>
-                            {/* Size */}
-                            <p>Size : | S | M | L | </p>
+                            {renderStars(foodDetailedData.foodRatings)}
+                            <span>{foodDetailedData.foodRatings}</span>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            {/* Feedback Placeholder */}
+            <div>
+                <h2>Feedback:</h2>
                 <div>
-                    <div>
-                        {/* Food Type */}
-                        <h5> Food Type : {foodDetailedData.foodType}</h5>
-
-                        {/* Food Ratings */}
-                        <div>
-                            <div>{renderStars(foodDetailedData.foodRatings)}</div>
-                            <h5>Ratings : {foodDetailedData.foodRatings && 0}</h5>
-                        </div>
-                    </div>
-                    <h2>FeedBack :- </h2>
-                    <div>
-
-                    </div>
+                    <p>Customer feedback coming soon...</p>
                 </div>
             </div>
 
             {/* Relative Food Cards */}
             <div className="card-group">
-                {relativeFoodData.map((index, item) => (
-                    <div key={index} className='card'>
-                        <div className="image">
-                            <img src={item.foodImageUrl} alt={item.foodName} />
+                {relativeFoodData.length > 0 ? (
+                    relativeFoodData.map((item) => (
+                        <div key={item._id} className='card'>
+                            <div className="image">
+                                <img src={item.foodImageUrl} alt={item.foodName} />
+                            </div>
+                            <div>
+                                <h4>{item.foodName}</h4>
+                                <h5>₹{item.foodPrice}</h5>
+                            </div>
                         </div>
-                        <div>
-                            <h4>{item.foodName}</h4>
-                            <h5>{item.foodPrice}</h5>
-                        </div>
-                    </div>
-                ))}
+                    ))
+                ) : (
+                    <p>No related food items found.</p>
+                )}
             </div>
         </div>
     );
