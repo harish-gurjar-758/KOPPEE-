@@ -6,6 +6,7 @@ import Reservation from './components/Pages/Reservation';
 import AdminBlock from './adminBlock/AdminBlock';
 import Menu from './components/Pages/Menu';
 import FoodDetailed from './components/Pages/FoodDetailed';
+import Offers from './components/Pages/Offers';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path='/coffee-shop/admin-block/' element={<AdminBlock />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/food-detailed-section/:id" element={<FoodDetailed />} />
+          <Route path='/offers' element={<Offers />} />
           {/* <Route path="/contact" element={<Contact />} /> */}
         </Routes>
       </div>

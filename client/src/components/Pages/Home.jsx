@@ -185,8 +185,18 @@ export default function Home() {
           </h4>
           <h2>BREWING DREAMS WIDE COFFEE</h2>
           <div className='btn-group'>
-            <div className="btn btn-border" onClick={() => navigate('/reservation')}>BOOK A TABLE</div>
-            <div className="btn">OPEN MENU</div>
+            <div
+              className="btn btn-border"
+              onClick={() => navigate('/reservation')}
+            >
+              BOOK A TABLE
+            </div>
+            <div 
+            className="btn"
+            onClick={()=> navigate('/menu')}
+            >
+              OPEN MENU
+              </div>
           </div>
         </div>
       </div>
@@ -545,7 +555,7 @@ export default function Home() {
               ></textarea>
             </div>
             <p style={{ color: isOverLimit ? 'red' : 'white' }}>
-              {isOverLimit 
+              {isOverLimit
                 ? 'You have exceeded the 50 word limit!'
                 : 'Write Your Message in 50 words only. . . '}
             </p>

@@ -44,10 +44,9 @@ export default function NavBar() {
                 </Link>
                 <div className='links-container'>
                     <Link to='/' className='link'><h4>Home</h4></Link>
-                    <Link to='/about' className='link'><h4>About</h4></Link>
                     <Link to='/menu' className="link"><h4>Menu</h4></Link>
                     <Link className="link"><h4>Order</h4></Link>
-                    <Link className="link"><h4>Offer</h4></Link>
+                    <Link to='/offers' className="link"><h4>Offers</h4></Link>
                     <Link className="link"><h4>Shops</h4></Link>
                     <Link className="link"><h4>Contact</h4></Link>
                 </div>
@@ -71,10 +70,6 @@ export default function NavBar() {
                         onClick={handleLinkClick}
                     >
                         <h4>Home</h4></Link>
-                    <Link to='/about' className='link'
-                        onClick={handleLinkClick}
-                    >
-                        <h4>About</h4></Link>
                     <Link className="link"
                         onClick={handleLinkClick}
                         to='/menu'
@@ -86,8 +81,9 @@ export default function NavBar() {
                         <h4>Order</h4></Link>
                     <Link className="link"
                         onClick={handleLinkClick}
+                        to='/offers'
                     >
-                        <h4>Offer</h4></Link>
+                        <h4>Offers</h4></Link>
                     <Link className="link"
                         onClick={handleLinkClick}
                     >

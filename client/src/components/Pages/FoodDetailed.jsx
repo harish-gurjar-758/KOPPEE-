@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { addRatingToFood, getOneFoodById, getRelativeFoods } from '../../Apis/Apis';
 import { FcLeft } from 'react-icons/fc';
-import { FaStar, FaStarHalfAlt, FaRegStar, FaShare, FaCommentAlt, FaCommentDots } from "react-icons/fa";
+import { FaStar, FaStarHalfAlt, FaRegStar, FaShare, FaCommentDots } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
-import { RiHeart2Line, RiHeartAdd2Line, RiSubtractFill } from "react-icons/ri";
+import { RiHeart2Line, RiSubtractFill } from "react-icons/ri";
 
 // ⭐ Helper to generate star icons
 const renderStars = (rating) => {
