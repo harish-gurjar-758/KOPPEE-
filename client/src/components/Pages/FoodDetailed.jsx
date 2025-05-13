@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { addRatingToFood, getOneFoodById, getRelativeFoods } from '../../Apis/Apis';
 import { FcLeft } from 'react-icons/fc';
-import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import { FaStar, FaStarHalfAlt, FaRegStar, FaShare, FaCommentAlt, FaCommentDots } from "react-icons/fa";
+import { IoMdAdd } from "react-icons/io";
+import { RiHeart2Line, RiHeartAdd2Line, RiSubtractFill } from "react-icons/ri";
 
 // ⭐ Helper to generate star icons
 const renderStars = (rating) => {
@@ -77,6 +79,10 @@ export default function FoodDetailed() {
     }
 
     useEffect(() => {
+        // for the page loading on the top
+        window.scrollTo(0, 0);
+
+        // Functions for fetching the data
         const fetchFoodDetails = async () => {
             try {
                 const response = await getOneFoodById(id);
@@ -112,161 +118,222 @@ export default function FoodDetailed() {
 
     return (
         <div className='FoodDetailed'>
-            <div className='header'>
-                <h2>This is Food Detailed Box</h2>
-                <h5>
-                    <FcLeft />
-                    <p onClick={() => navigate('/menu')} style={{ cursor: 'pointer', textDecoration: 'underline' }}>/ Menu</p>
-                    <span>{currentPath}</span>
-                </h5>
-            </div>
-
-            <div className="food-details">
-                <div className='food-details-left'>
-                    <div className='image'>
-                        <img className='large-image' src={foodDetailedData.foodImageUrl} alt={foodDetailedData.foodName} />
-                        <img className='small-image' src={foodDetailedData.foodImageUrl} alt={foodDetailedData.foodName} />
-                    </div>
-                    <div>
-                        <h3>Customize your {foodDetailedData.foodType} here</h3>
-                        <div>
-                            <h5>Size</h5>
-                            <div>
-                                <h5>Small</h5>
-                                <h5>Medim</h5>
-                                <h5>Large</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>Quantity</h3>
-                        <div>
-                            <div>-</div>
-                            <p>1</p>
-                            <div>+</div>
-                        </div>
+            {!foodDetailedData.length > 0 ? (
+                <>
+                    <div className='header'>
+                        <h2>This is Food Detailed Box</h2>
+                        <h5>
+                            <FcLeft />
+                            <p onClick={() => navigate('/menu')} style={{ cursor: 'pointer', textDecoration: 'underline' }}>/ Menu</p>
+                            <span>{currentPath}</span>
+                        </h5>
                     </div>
 
-                    <div>
-                        <div className="input-box">
-                            <input
-                                type="text"
-                                placeholder='Your Full Name'
-                                name='userFullName'
-                                value={ratingFormData.userFullName}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="input-box">
-                            <input
-                                type="number"
-                                placeholder='Food Rating (1-5)'
-                                name='rating'
-                                value={ratingFormData.rating}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="input-box">
-                            <input
-                                type="text"
-                                placeholder='Write your Feedback'
-                                name='message'
-                                value={ratingFormData.message}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className="btn btn-add" onClick={handleSubmit}>
-                            Submit
-                        </div>
-                    </div>
-                </div>
+                    <div className="food-details">
+                        <div className='food-details-left'>
+                            <div className='image'>
+                                <img
+                                    className='large-image'
+                                    src={foodDetailedData.foodImageUrl}
+                                    alt={foodDetailedData.foodName}
+                                />
+                                <img
+                                    className='small-image'
+                                    src={foodDetailedData.foodImageUrl}
+                                    alt={foodDetailedData.foodName}
+                                />
+                            </div>
+                            <div className='item-customiz-box'>
+                                <h3>Customize your {foodDetailedData.foodType} here</h3>
+                                <div className='sub-box'>
+                                    <h3>Size : </h3>
+                                    <div>
+                                        <h5>Small</h5>
+                                        <h5>Medim</h5>
+                                        <h5>Large</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='quantity-box'>
+                                <h3>Quantity</h3>
+                                <div className='quantity-btn-group' >
+                                    <div className='quantity-btn'>
+                                        <RiSubtractFill />
+                                    </div>
+                                    <p>1</p>
+                                    <div className='quantity-btn'>
+                                        <IoMdAdd />
+                                    </div>
+                                </div>
+                            </div>
 
-                <div className='food-details-right'>
-                    <div>
-                        <h1>{foodDetailedData.foodName}</h1>
-                        <p>{foodDetailedData.foodType}</p>
-                    </div>
-                    <div>
-                        <div>
-                            {renderStars(avgRating)}
-                            <span>{avgRating.toFixed(1)}</span>
-                        </div>
-                    </div>
-                    {
-                        foodDetailedData.foodDescount > 0 ? (
-                            <div>
-                                <p>
-                                    <span style={{ fontWeight: 'bold', color: 'green' }}>
-                                        ₹{Math.round(foodDetailedData.foodPrice * (1 - foodDetailedData.foodDescount / 100))}
-                                    </span>{' '}
-                                    <span style={{ textDecoration: 'line-through', color: 'gray', marginLeft: '8px' }}>
-                                        ₹{foodDetailedData.foodPrice}
-                                    </span>
-                                </p>
-                                <p style={{ color: 'red' }}>{foodDetailedData.foodDescount}% OFF</p>
-                            </div>
-                        ) : (
-                            <p>₹{foodDetailedData.foodPrice}</p>
-                        )
-                    }
-                    <div>
-                        <h3>Product description</h3>
-                        <p>{foodDetailedData.foodDescription}</p>
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <h2>Feedback:</h2>
-                <div>
-                    {foodDetailedData.foodRatings.map((item) => (
-                        <div>
-                            <div>
-                                <img src='https://th.bing.com/th/id/OIP.7O4_GREtLbxqPdJCTmfatQHaHa?rs=1&pid=ImgDetMain' alt={item.userFullName} />
-                                <h5>{item.userFullName}</h5>
-                                {renderStars(item.rating)}
-                            </div>
-                            <div>
-                                <p>{item.message}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            <div className="relative-card-group">
-                {relativeFoodData.length > 0 ? (
-                    relativeFoodData.map((item) => (
-                        <div key={item._id} className='relative-card'>
-                            <div className="image">
-                                <img src={item.foodImageUrl} alt={item.foodName} />
-                            </div>
-                            <div className='details'>
-                                <h4>{item.foodName}</h4>
-                                {
-                                    item.foodDescount > 0 ? (
-                                        <div>
-                                            <p>
-                                                <span style={{ fontWeight: 'bold', color: 'green' }}>
-                                                    ₹{Math.round(item.foodPrice * (1 - item.foodDescount / 100))}
-                                                </span>{' '}
-                                                <span style={{ textDecoration: 'line-through', color: 'gray', marginLeft: '8px' }}>
-                                                    ₹{item.foodPrice}
-                                                </span>
-                                            </p>
-                                            <p style={{ color: 'red' }}>{item.foodDescount}% OFF</p>
+                            <div className='rating-form-container'>
+                                <h3>Give The Feedback and Rating For Food -</h3>
+                                <div className="form">
+                                    <div className="input-group">
+                                        <div className="input-box">
+                                            <input
+                                                type="text"
+                                                placeholder='Your Full Name'
+                                                name='userFullName'
+                                                value={ratingFormData.userFullName}
+                                                onChange={handleChange}
+                                            />
                                         </div>
-                                    ) : (
-                                        <p>₹{item.foodPrice}</p>
-                                    )
-                                }
+                                        <div className="input-box">
+                                            <input
+                                                type="number"
+                                                placeholder='Food Rating (1-5)'
+                                                name='rating'
+                                                value={ratingFormData.rating}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                        <div className="message-box">
+                                            <textarea
+                                                placeholder='Write your Feedback'
+                                                name='message'
+                                                value={ratingFormData.message}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="btn btn-add" onClick={handleSubmit}>
+                                        Submit
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    ))
-                ) : (
-                    <p>No related food items found.</p>
-                )}
-            </div>
+
+                        <div className='food-details-right'>
+                            <div>
+                                <h1>{foodDetailedData.foodName}</h1>
+                                <p>{foodDetailedData.foodType}</p>
+                            </div>
+                            <div>
+                                <div>
+                                    {renderStars(avgRating)}
+                                    <span>{avgRating.toFixed(1)}</span>
+                                </div>
+                            </div>
+                            {
+                                foodDetailedData.foodDescount > 0 ? (
+                                    <div>
+                                        <p>
+                                            <span style={{ fontWeight: 'bold', color: 'green' }}>
+                                                ₹{Math.round(foodDetailedData.foodPrice * (1 - foodDetailedData.foodDescount / 100))}
+                                            </span>{' '}
+                                            <span style={{ textDecoration: 'line-through', color: 'gray', marginLeft: '8px' }}>
+                                                ₹{foodDetailedData.foodPrice}
+                                            </span>
+                                        </p>
+                                        <p style={{ color: 'red' }}>{foodDetailedData.foodDescount}% OFF</p>
+                                    </div>
+                                ) : (
+                                    <p>₹{foodDetailedData.foodPrice}</p>
+                                )
+                            }
+                            <div>
+                                <h3>Product description</h3>
+                                <p>{foodDetailedData.foodDescription}</p>
+                            </div>
+
+                            <div className="product-detailes-box">
+                                <h3>Product detailes</h3>
+                                <p><strong>Product Name :- </strong>{foodDetailedData.foodName}</p>
+                                <p><strong>Product Range :- </strong></p>
+                                <p><strong>Product Ratings :- </strong>{avgRating.toFixed(1)}</p>
+                                <p><strong>Weight :- </strong></p>
+                            </div>
+
+                            <div className="product-main-btns">
+                                <div className="btn">
+                                    Buy Now
+                                </div>
+                                <div className="btn">
+                                    Add to card
+                                </div>
+                                <div className='sub-btns'>
+                                    <div>
+                                        <FaCommentDots />
+                                        <p>Chat</p>
+                                    </div>
+                                    <div>
+                                        <RiHeart2Line />
+                                        <p>wishlist</p>
+                                    </div>
+                                    <div>
+                                        <FaShare />
+                                        <p>Share</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Feedback -- */}
+                            <div className='feedback-container'>
+                                <h2>Feedback:</h2>
+                                <h4>Reviews {foodDetailedData.foodRatings.length}</h4>
+                                {foodDetailedData.foodRatings.map((item) => (
+                                    <div className='feedback-card'>
+                                        <div className='profile'>
+                                            <img src='https://th.bing.com/th/id/OIP.7O4_GREtLbxqPdJCTmfatQHaHa?rs=1&pid=ImgDetMain' alt={item.userFullName} />
+                                            <div>
+                                                <h5>{item.userFullName}</h5>
+                                                <h6>
+                                                    {renderStars(item.rating)}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <div className='description'>
+                                            <h5>Customer What Said About Over :</h5>
+                                            <p>{item.message}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className="relative-card-group">
+                        {relativeFoodData.length > 0 ? (
+                            relativeFoodData.map((item) => (
+                                <div
+                                    key={item._id}
+                                    className='relative-card'
+                                    onClick={() => navigate(`/food-detailed-section/${item._id}`)}
+                                >
+                                    <div className="image">
+                                        <img src={item.foodImageUrl} alt={item.foodName} />
+                                    </div>
+                                    <div className='details'>
+                                        <h4>{item.foodName}</h4>
+                                        {
+                                            item.foodDescount > 0 ? (
+                                                <div>
+                                                    <p>
+                                                        <span style={{ fontWeight: 'bold', color: 'green' }}>
+                                                            ₹{Math.round(item.foodPrice * (1 - item.foodDescount / 100))}
+                                                        </span>{' '}
+                                                        <span style={{ textDecoration: 'line-through', color: 'gray', marginLeft: '8px' }}>
+                                                            ₹{item.foodPrice}
+                                                        </span>
+                                                    </p>
+                                                    <p style={{ color: 'red' }}>{item.foodDescount}% OFF</p>
+                                                </div>
+                                            ) : (
+                                                <p>₹{item.foodPrice}</p>
+                                            )
+                                        }
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No related food items found.</p>
+                        )}
+                    </div>
+                </>
+            ) : (<p>LOading...</p>)}
         </div >
     );
 }

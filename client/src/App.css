@@ -836,7 +836,7 @@ td {
 
   textarea {
     width: 96%;
-    /* height: 100%; */
+    height: 80%;
     border: none;
     outline: none;
     background: transparent;
@@ -1077,7 +1077,7 @@ td {
 
     .large-image {
       height: 80%;
-    } 
+    }
 
     .small-image {
       width: 80px;
@@ -1087,6 +1087,71 @@ td {
       bottom: 20px;
       left: 20px;
       box-shadow: #494e60 1px 0 10px;
+    }
+  }
+
+  .item-customiz-box {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 30px;
+
+    .sub-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      div {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h5 {
+          width: 80px;
+          height: 30px;
+          border: 2px solid gray;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+
+  .quantity-box {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .quantity-btn-group {
+      width: 200px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      border: 2px solid gray;
+
+      .quantity-btn {
+        width: 30px;
+        height: 30px;
+        border: 2px solid gray;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .rating-form-container {
+    margin-top: 40px;
+
+    h3 {
+      margin-bottom: 30px;
     }
   }
 }
@@ -1133,6 +1198,63 @@ td {
 
     h4 {
       font-size: 14px;
+    }
+  }
+}
+
+.FoodDetailed .food-details .food-details-right .product-main-btns {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .btn {
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid gray;
+  }
+
+  .sub-btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+    }
+  }
+}
+
+.FoodDetailed .food-details .food-details-right .feedback-container {
+  margin-top: 40px;
+
+  .feedback-card {
+    margin-top: 30px;
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 10px;
+
+      img {
+        width: 60px;
+        border-radius: 50%;
+      }
+
+      h5 {
+        margin-bottom: 10px;
+      }
+    }
+
+    .description{
+      p{
+        font-size: 14px;
+      }
     }
   }
 }
