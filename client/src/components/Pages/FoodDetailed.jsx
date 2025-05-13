@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { addRatingToFood, getFoodRatings, getOneFoodById, getRelativeFoods } from '../../Apis/Apis';
+import { addRatingToFood, getOneFoodById, getRelativeFoods } from '../../Apis/Apis';
 import { FcLeft } from 'react-icons/fc';
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
@@ -25,7 +25,7 @@ const renderStars = (rating) => {
     );
 };
 
-// 🔢 Helper to calculate average from foodRatings array
+// Helper to calculate average from foodRatings array
 const getAverageRating = (ratings) => {
     if (!Array.isArray(ratings) || ratings.length === 0) return 0;
 
@@ -50,7 +50,6 @@ export default function FoodDetailed() {
         rating: '',
         message: ''
     });
-    const [foodRatingData, setFoodRatingData] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -101,22 +100,9 @@ export default function FoodDetailed() {
             }
         };
 
-        // Get food ratings 
-        const fetchFoodRatingsFeedback = async () => {
-            try {
-                const response = await getFoodRatings(id);
-                setFoodRatingData(response);
-                console.log(response)
-            } catch (error) {
-                console.error("Error fetching Food Rating Data:", error);
-            }
-        };
-
-
         if (id) {
             fetchFoodDetails();
             fetchRelativeFoods();
-            fetchFoodRatingsFeedback();
         }
     }, [id]);
 
@@ -142,7 +128,7 @@ export default function FoodDetailed() {
                         <img className='small-image' src={foodDetailedData.foodImageUrl} alt={foodDetailedData.foodName} />
                     </div>
                     <div>
-                        <h3>Customize your foodType here</h3>
+                        <h3>Customize your {foodDetailedData.foodType} here</h3>
                         <div>
                             <h5>Size</h5>
                             <div>
@@ -233,24 +219,18 @@ export default function FoodDetailed() {
             <div>
                 <h2>Feedback:</h2>
                 <div>
-                    {foodRatingData.length > 0 ?
-                        (
-                            foodRatingData.map((item, index) => (
-                                <div key={index}>
-                                    <div>
-                                        <img src='https://th.bing.com/th/id/OIP.7O4_GREtLbxqPdJCTmfatQHaHa?rs=1&pid=ImgDetMain'alt={item.userFullName}/>
-                                        <h5>{item.userFullName}</h5>
-                                        <div>
-                                            {/* show the stars in this div and how the rating number form 5  */}
-                                        </div>
-                                    </div>
-                                    <p>{item.message}</p>
-                                </div>
-                            ))
-                        ) : (
-                            <p>Customer feedback coming soon...</p>
-                        )
-                    }
+                    {foodDetailedData.foodRatings.map((item) => (
+                        <div>
+                            <div>
+                                <img src='https://th.bing.com/th/id/OIP.7O4_GREtLbxqPdJCTmfatQHaHa?rs=1&pid=ImgDetMain' alt={item.userFullName} />
+                                <h5>{item.userFullName}</h5>
+                                {renderStars(item.rating)}
+                            </div>
+                            <div>
+                                <p>{item.message}</p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
 
