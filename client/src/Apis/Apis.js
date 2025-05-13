@@ -174,7 +174,7 @@ export const addRatingToFood = async (id, ratingData) => {
     const response = await axios.post(`${BaseUrl}/food/${id}/ratings`, ratingData);
     return response.data;
   } catch (error) {
-    console.error('Error adding rating to food', error);
+    console.error('Error adding rating to food:', error.response?.data || error.message);
     throw error;
   }
 };

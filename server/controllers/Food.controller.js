@@ -143,27 +143,48 @@ export const getRelativeFoods = async (req, res) => {
     }
 };
 
-// Add a rating
+// Add a rating to a food item
 export const addRatingToFood = async (req, res) => {
     try {
         const { id } = req.params;
-        const { rating } = req.body;
+        const { rating, message, userFullName } = req.body;
 
-        if (rating < 1 || rating > 5) {
-            return res.status(400).json({ message: "Rating must be between 1 and 5" });
+        // Convert rating to number if it's a string
+        const numericRating = Number(rating);
+
+        // Validate rating
+        if (isNaN(numericRating) || numericRating < 1 || numericRating > 5) {
+            return res.status(400).json({ message: "Rating must be a number between 1 and 5" });
         }
 
+        // Find the food item
         const food = await Food.findById(id);
-        if (!food) return res.status(404).json({ message: "Food not found" });
+        if (!food) {
+            return res.status(404).json({ message: "Food not found" });
+        }
 
-        food.foodRatings.push(rating);
+        // Add the new rating
+        food.foodRatings.push({
+            rating: numericRating,
+            message,
+            userFullName
+        });
+
+        // Save updated food
         await food.save();
 
-        res.status(200).json({ message: "Rating added successfully", food });
+        res.status(200).json({
+            message: "Rating added successfully",
+            food
+        });
     } catch (err) {
-        res.status(500).json({ message: "Error adding rating", error: err.message });
+        res.status(500).json({
+            message: "Error adding rating",
+            error: err.message
+        });
     }
 };
+
 
 // Get ratings summary
 export const getFoodRatings = async (req, res) => {

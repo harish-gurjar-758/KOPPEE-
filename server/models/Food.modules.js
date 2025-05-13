@@ -23,12 +23,19 @@ const foodSchema = new mongoose.Schema({
     foodDescription: {
         type: String,
     },
-
     foodRatings: [
         {
-            type: Number,
-            min: 1,
-            max: 5
+            rating: {
+                type: Number,
+                min: 1,
+                max: 5
+            },
+            message: {
+                type: String
+            },
+            userFullName: {
+                type: String
+            }
         }
     ]
 });

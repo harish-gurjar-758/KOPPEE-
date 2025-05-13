@@ -1046,35 +1046,55 @@ td {
 }
 
 .FoodDetailed .food-details {
-  width: auto;
-  height: 300px;
-  padding-right: 30px;
+  width: 90%;
+  /* height: 300px; */
+  /* padding-right: 30px; */
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   margin: 60px 0px;
-  background-color: #1d1d1d;
+  gap: 50px;
+  /* background-color: #1d1d1d; */
+  /* border: 2px solid red; */
 }
 
-.FoodDetailed .food-details .food-details-top {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
+.FoodDetailed .food-details .food-details-left {
+  width: 50%;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: space-between; */
+  /* gap: 60px; */
 
-  .image{
-    height: 100%;
-    img{
-      height: 300px;
+  .image {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    border: 2px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+
+    .large-image {
+      height: 80%;
+    } 
+
+    .small-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 5px;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      box-shadow: #494e60 1px 0 10px;
     }
   }
 }
 
-.FoodDetailed .food-details .food-details-bottom {
-  width: 100%;
+.FoodDetailed .food-details .food-details-right {
+  width: 50%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   gap: 60px;
 }
 
@@ -1090,6 +1110,7 @@ td {
 
 .FoodDetailed .relative-card-group .relative-card {
   width: 150px;
+  height: 250px;
   background-color: #1d1d1d;
 
   .image {
@@ -1105,12 +1126,12 @@ td {
     }
   }
 
-  .details{
+  .details {
     width: 90%;
     margin-top: 10px;
     padding: 0px 10px 10px 10px;
 
-    h4{
+    h4 {
       font-size: 14px;
     }
   }
