@@ -128,7 +128,7 @@ export const getRelativeFoods = async (req, res) => {
         const relativeFoods = await Food.find({
             _id: { $ne: currentFood._id }, // ensure proper ObjectId comparison
             foodType: { $regex: new RegExp(`^${foodType}$`, 'i') } // case-insensitive match
-        }).limit(6);
+        }).limit(60);
 
         // Return result
         res.status(200).json({
