@@ -152,9 +152,24 @@ export default function Offers() {
                     {/* ---- */}
                     <div className='heading'>
                         <h2>Offers on Foods</h2>
+                        <p>
+                            <span className="text">
+                                मसालेदार ऑफ़र आपके ग्रुप चैट ड्रामा से भी ज़्यादा गर्म हैं
+                            </span>— जल्दी लपक लो!</p>
                     </div>
                     {/* ------ */}
                     <div className='offers-cards-container'>
+                        <div className='controlle-btns-group'>
+                            <div className='controlle-btn'>
+                                <p>Restaurants</p>
+                            </div>
+                            <div className='controlle-btn'>
+                                <p>Dishes</p>
+                            </div>
+                            <div className='controlle-btn'>
+                                <p>Drinks</p>
+                            </div>
+                        </div>
                         <div className='offers-card-group'>
                             {discountFood.map((item, index) => (
                                 <div

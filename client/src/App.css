@@ -1416,6 +1416,39 @@ td {
 
 }
 
+/* heading */
+.Offers .heading {
+  flex-direction: column;
+  align-items: baseline;
+  padding-left: 10%;
+  margin-top: 50px;
+/* background: grey; */
+
+p{
+  font-size: 20px;
+}
+ 
+.text {
+  padding: 10px;
+  background: url("https://th.bing.com/th/id/R.94fbee4aef37a3a09d5aa913578fafe9?rik=Y5dgHWU8YTcfaA&riu=http%3a%2f%2fpa1.narvii.com%2f6363%2ff125023c5a378385fceef8e8b909d8cd03f20f5e_hq.gif&ehk=V8tvkTaNzfN%2brSQaRcXcmg5ktPgH8Chhs6Xywz9SY4c%3d&risl=&pid=ImgRaw&r=0");
+  background-size: cover;
+  background-position: bottom;
+  -webkit-background-clip: text;
+  color: #00000047;
+  text-transform: uppercase;
+  /* font-size: 8rem; */
+  font-weight: 900;
+	font-family: 'Righteous', cursive;
+  letter-spacing: 1px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  text-align: center;
+}
+
+}
+
 .Offers .offers-cards-container {
   width: 90%;
   margin-top: 50px;
@@ -1425,7 +1458,23 @@ td {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 20px;
   border-radius: 10px;
+
+  .controlle-btns-group{
+    width: 90%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    .controlle-btn{
+      padding: 10px 15px;
+      border: 2px solid white;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+  }
 
   .offers-card-group {
     width: 90%;
@@ -1452,6 +1501,7 @@ td {
         display: flex;
         flex-direction: column;
         gap: 10px;
+
         .offers-cards-ratings {
           display: flex;
           align-items: center;
