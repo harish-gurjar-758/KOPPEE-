@@ -1416,7 +1416,7 @@ td {
 
 }
 
-.Offers .offers-cards-container{
+.Offers .offers-cards-container {
   width: 90%;
   margin-top: 50px;
   padding: 50px 0px;
@@ -1427,7 +1427,7 @@ td {
   flex-direction: column;
   border-radius: 10px;
 
-  .offers-card-group{
+  .offers-card-group {
     width: 90%;
     display: flex;
     flex-wrap: wrap;
@@ -1438,7 +1438,7 @@ td {
     padding: 40px 0px;
     border-radius: 10px;
 
-    .offers-card{
+    .offers-card {
       width: 400px;
       height: 150px;
       border: 2px solid white;
@@ -1448,19 +1448,25 @@ td {
       justify-content: space-around;
       background-color: #000;
 
-      .offers-card-detailes{
-        /* display: flex; */
-        /* flex-direction: column; */
+      .offers-card-detailes {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .offers-cards-ratings {
+          display: flex;
+          align-items: center;
+          gap: 30px;
+        }
       }
 
-      .offers-card-image{
+      .offers-card-image {
         position: relative;
 
-        img{
+        img {
           border-radius: 5px;
         }
 
-        .offers-card-btn{
+        .offers-card-btn {
           width: 60px;
           height: 30px;
           position: absolute;

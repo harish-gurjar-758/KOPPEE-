@@ -178,13 +178,13 @@ export default function Offers() {
                                         ) : (
                                             <h4>₹{item.foodPrice}</h4>
                                         )}
-                                        <div>
+                                        <div className='offers-cards-ratings'>
                                             {(() => {
                                                 const avgRating = getAverageRating(item.foodRatings);
                                                 return (
                                                     <>
                                                         <div>{renderStars(avgRating)}</div>
-                                                        <p>{avgRating.toFixed(1)}</p>
+                                                        <p>{avgRating.toFixed(1)} / 5</p>
                                                     </>
                                                 );
                                             })()}
