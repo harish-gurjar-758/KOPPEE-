@@ -3,6 +3,7 @@
 # dependencies
 # -- Client -- 
 /client/node_modules
+/client/src/.env
 
 # -- Server --
 /server/node_modules

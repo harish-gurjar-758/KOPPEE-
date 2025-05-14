@@ -47,8 +47,8 @@ export default function NavBar() {
                     <Link to='/menu' className="link"><h4>Menu</h4></Link>
                     <Link className="link"><h4>Order</h4></Link>
                     <Link to='/offers' className="link"><h4>Offers</h4></Link>
-                    <Link className="link"><h4>Shops</h4></Link>
-                    <Link className="link"><h4>Contact</h4></Link>
+                    <Link to='shops-location' className="link"><h4>Shops</h4></Link>
+                    <Link to='/contacts' className="link"><h4>Contact</h4></Link>
                 </div>
 
                 <div className='more-options'>

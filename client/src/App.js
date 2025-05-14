@@ -7,6 +7,7 @@ import AdminBlock from './adminBlock/AdminBlock';
 import Menu from './components/Pages/Menu';
 import FoodDetailed from './components/Pages/FoodDetailed';
 import Offers from './components/Pages/Offers';
+import Shops from './components/Pages/Shops';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/menu" element={<Menu />} />
           <Route path="/food-detailed-section/:id" element={<FoodDetailed />} />
           <Route path='/offers' element={<Offers />} />
+          <Route path='shops-location' element={<Shops />} />
           {/* <Route path="/contact" element={<Contact />} /> */}
         </Routes>
       </div>
