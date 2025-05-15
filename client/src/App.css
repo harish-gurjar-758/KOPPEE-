@@ -1591,8 +1591,8 @@ td {
   flex-direction: column;
 
   .contact-container {
-    width: 80%;
-    margin-top: 150px;
+    width: 90%;
+    margin-top: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1629,6 +1629,7 @@ td {
       width: 100%;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
 
       .bottom-left {
         display: flex;
@@ -1678,7 +1679,7 @@ td {
             cursor: pointer;
             border: 2px solid gainsboro;
 
-            &:hover{
+            &:hover {
               background-color: transparent;
               color: gainsboro;
             }
