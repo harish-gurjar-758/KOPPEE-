@@ -8,6 +8,7 @@ import Menu from './components/Pages/Menu';
 import FoodDetailed from './components/Pages/FoodDetailed';
 import Offers from './components/Pages/Offers';
 import Shops from './components/Pages/Shops';
+import Contacts from './components/Pages/Contacts';
 
 
 function App() {
@@ -22,8 +23,8 @@ function App() {
           <Route path="/menu" element={<Menu />} />
           <Route path="/food-detailed-section/:id" element={<FoodDetailed />} />
           <Route path='/offers' element={<Offers />} />
-          <Route path='shops-location' element={<Shops />} />
-          {/* <Route path="/contact" element={<Contact />} /> */}
+          <Route path='/shops-location' element={<Shops />} />
+          <Route path="/contacts" element={<Contacts />} />
         </Routes>
       </div>
     </Router>

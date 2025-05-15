@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Annapurna+SIL:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Tagesschrift&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Annapurna+SIL:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Ruthie&family=Tagesschrift&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
 
 * {
   margin: 0px;
@@ -1529,6 +1531,7 @@ td {
           align-items: center;
           justify-content: center;
           border-radius: 5px;
+          cursor: pointer;
         }
       }
     }
@@ -1567,5 +1570,121 @@ td {
     width: 80%;
     height: 100vh;
     flex: 1;
+  }
+}
+
+/* ----------- */
+/* ---- Constact */
+/* ----------- */
+
+.Contact {
+  width: 100%;
+  /* height: 100vh; */
+  padding-bottom: 70px;
+  background-image: url('./assets/contact-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .contact-container {
+    width: 80%;
+    margin-top: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 70px;
+
+    .contact-top-box {
+      width: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      gap: 30px;
+
+      .contact-heading {
+        font-family: "Tangerine", cursive;
+        font-weight: 500;
+        font-size: 70px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .heading-under-line {
+          height: 1.4px;
+          width: 90px;
+          background-color: gainsboro;
+        }
+      }
+    }
+
+    .contact-bottom-box {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .bottom-left {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+
+        .control-btns {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 20px;
+
+          .control-btn {
+            border: 2px solid gainsboro;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+
+          .active {
+            background-color: ghostwhite;
+            color: grey;
+          }
+        }
+
+        .manual-contacts-container {
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+        }
+
+        .social-media-btns-group {
+          display: flex;
+          align-items: center;
+          gap: 30px;
+
+          .social-media-btn {
+            width: 40px;
+            height: 40px;
+            background-color: gainsboro;
+            color: black;
+            font-size: 23px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid gainsboro;
+
+            &:hover{
+              background-color: transparent;
+              color: gainsboro;
+            }
+          }
+        }
+      }
+    }
   }
 }
