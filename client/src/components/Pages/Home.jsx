@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { GrUserManager } from "react-icons/gr";
 import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { BsFillCupHotFill } from "react-icons/bs";
-import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import { createReservation } from '../../Apis/Apis';
+import { createReservation, getAllDescountFood } from '../../Apis/Apis';
 import { useNavigate } from 'react-router-dom';
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 const offerData = [
   {
@@ -29,24 +29,48 @@ const offerData = [
   }
 ];
 
-// ⭐ Helper to generate star icons:
+// ⭐ Helper to generate star icons
 const renderStars = (rating) => {
-  const fullStars = Math.floor(rating);
-  const halfStar = rating % 1 >= 0.5;
+  const numericRating = Number(rating);
+
+  // Validate the rating
+  if (isNaN(numericRating) || numericRating < 0 || numericRating > 5) {
+    return <p style={{ color: "gray" }}>No Rating</p>;
+  }
+
+  const fullStars = Math.floor(numericRating);
+  const halfStar = numericRating % 1 >= 0.5;
   const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 
   return (
     <>
       {[...Array(fullStars)].map((_, i) => <FaStar key={`full-${i}`} color="orange" />)}
-      {halfStar && <FaStarHalfAlt color="orange" />}
+      {halfStar && <FaStarHalfAlt key="half" color="orange" />}
       {[...Array(emptyStars)].map((_, i) => <FaRegStar key={`empty-${i}`} color="orange" />)}
     </>
   );
 };
 
+// 🔢 Helper to calculate average from foodRatings array
+const getAverageRating = (ratings) => {
+  if (!Array.isArray(ratings) || ratings.length === 0) return 0;
+
+  const total = ratings.reduce((sum, item) => {
+    const value = typeof item === 'number' ? item : item?.rating;
+    return sum + (typeof value === 'number' ? value : 0);
+  }, 0);
+
+  return total / ratings.length;
+};
+
+
+//  main components
 export default function Home() {
   const textareaRef = useRef(null);
   const navigate = useNavigate();
+  const [bestDiscountData, setBestDiscount] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -96,6 +120,37 @@ export default function Home() {
       alert("Failed to submit reservation. Try again.")
     }
   }
+
+  // -----
+  useEffect(() => {
+    const fetchBestDiscountFoods = async () => {
+      try {
+        const response = await getAllDescountFood();
+        const foodList = Array.isArray(response)
+          ? response
+          : Array.isArray(response?.data)
+            ? response.data
+            : Array.isArray(response?.items)
+              ? response.items
+              : [];
+
+        // Filter items with 50% discount or more
+        const filteredList = foodList.filter(food => food.foodDescount >= 50);
+
+        setBestDiscount(filteredList);
+      } catch (err) {
+        console.error("Error fetching the discount food", err);
+        setError("Failed to fetch discount food.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBestDiscountFoods();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   // -----
   const ChooseUsData = [
@@ -191,12 +246,12 @@ export default function Home() {
             >
               BOOK A TABLE
             </div>
-            <div 
-            className="btn"
-            onClick={()=> navigate('/menu')}
+            <div
+              className="btn"
+              onClick={() => navigate('/menu')}
             >
               OPEN MENU
-              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -245,7 +300,12 @@ export default function Home() {
               <p>
                 Barista opened its doors in Scottsdale in july 218. Quickly embraced by Phoenix locals and international visitors, our cafe, restaurant & event space has flourished with multiple locations across the region. Barista brings to life childhood favorites, both savory and sweet, from the south of France and North America.
               </p>
-              <div className="btn orange-btn">Read More</div>
+              <div
+                className="btn orange-btn"
+                onClick={() => navigate('/menu')}
+              >
+                Read More
+              </div>
             </div>
           </div>
         </div>
@@ -294,15 +354,42 @@ export default function Home() {
         <h2>Our Best Offers this Week</h2>
 
         <div className='subsection-details-box'>
-          {offerData.map((item, index) => (
-            <div className='card' key={index}>
+          {bestDiscountData.map((item, index) => (
+            <div
+              className='card' key={index}
+              onClick={() => navigate(`/food-detailed-section/${item._id}`)}
+            >
               <div className="image">
-                <img src={item.image} alt="" />
+                <img src={item.foodImageUrl} alt="" />
               </div>
               <div className="details">
-                <h5>{item.heading}</h5>
-                <div className='retings'>{renderStars(item.stars)}</div>
-                <p>{item.price}</p>
+                <h5>{item.foodName}</h5> {(() => {
+                  const avgRating = getAverageRating(item.foodRatings);
+                  return (
+                    <>
+                      <div className='retings'>{renderStars(avgRating)}</div>
+                      {/* <p>{avgRating.toFixed(1)}</p> */}
+                    </>
+                  );
+                })()}
+
+                {
+                  item.foodDescount > 0 ? (
+                    <div>
+                      <h4>
+                        <span style={{ fontWeight: 'bold', color: 'green' }}>
+                          ₹{Math.round(item.foodPrice * (1 - item.foodDescount / 100))}
+                        </span>{' '}
+                        <span style={{ textDecoration: 'line-through', color: 'gray', marginLeft: '8px' }}>
+                          ₹{item.foodPrice}
+                        </span>
+                      </h4>
+                      <h4 style={{ color: 'red' }}>{item.foodDescount}% OFF</h4>
+                    </div>
+                  ) : (
+                    <h4>₹{item.foodPrice}</h4>
+                  )
+                }
               </div>
             </div>
           ))}
@@ -342,13 +429,15 @@ export default function Home() {
 
         <div className='subsection-details-box'>
           {videoGalleryData.map((item, index) => (
-            <div className='card' key={index}>
+            <div
+              className='card video-gallery-card' key={index}
+            >
               <div className="image">
                 <img src={item.video} alt="" />
               </div>
               <div className="details">
                 <h5>{item.heading}</h5>
-                <div className='retings'>{item.publiceDetails}</div>
+                <div>{item.publiceDetails}</div>
                 <p>{item.paragraph}</p>
                 <div className="readmore-btn">Read More <HiArrowLongRight /> </div>
               </div>
