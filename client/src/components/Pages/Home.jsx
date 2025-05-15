@@ -463,19 +463,22 @@ export default function Home() {
 
         <div className='subsection-details-box'>
           {testimonialsData.map((item, index) => (
-            <div className='card' key={index}>
-              <div className="details">
-                <h5>{item.heading}</h5>
-                <div className='retings'>{item.publiceDetails}</div>
-                <p>{item.paragraph}</p></div>
-              <div className="image">
+            <div className='card testimonial-card' key={index}>
+              <div className='profile'>
+                <img 
+                src='https://th.bing.com/th/id/OIP.7O4_GREtLbxqPdJCTmfatQHaHa?rs=1&pid=ImgDetMain'
+                 alt={item.userFullName} 
+                 />
                 <div>
-                  <img src={item.video} alt="" />
-                  <h6>hy</h6>
+                  <h5>{item.userFullName}</h5>
+                  <h6>
+                    {renderStars(item.rating)}
+                  </h6>
                 </div>
-                <div>
-                  <p>{item.commitDate}</p>
-                </div>
+              </div>
+              <div className='description'>
+                <h5>Customer What Said About Over :</h5>
+                <p>{item.message}</p>
               </div>
             </div>
           ))}
