@@ -8,26 +8,6 @@ import { createReservation, getAllDescountFood } from '../../Apis/Apis';
 import { useNavigate } from 'react-router-dom';
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
-const offerData = [
-  {
-    image: "https://th.bing.com/th/id/OIP.W-ctyMIw5v4-y8P5MOgbNAAAAA?pid=ImgDet&w=120&h=120&c=7&dpr=1.3&rs=1",
-    heading: "ESPRESSO",
-    stars: 4,
-    price: "$5.00"
-  },
-  {
-    image: "https://besthomecoffeemachines.com/wp-content/uploads/2022/03/What-is-Cappuccino-Made-of.jpg",
-    heading: "MARASCHINO",
-    stars: 4.5,
-    price: "$6.00"
-  },
-  {
-    image: "https://images.pexels.com/photos/2228889/pexels-photo-2228889.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
-    heading: "ANTOCCIND",
-    stars: 4,
-    price: "$5.00"
-  }
-];
 
 // ⭐ Helper to generate star icons
 const renderStars = (rating) => {
