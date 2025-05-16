@@ -274,7 +274,7 @@ export default function FoodDetailed() {
                                 <h2>Feedback:</h2>
                                 <h4>Reviews {foodDetailedData.foodRatings.length}</h4>
                                 {foodDetailedData.foodRatings.map((item) => (
-                                    <div className='feedback-card'>
+                                    <div key={item._id} className='feedback-card'>
                                         <div className='profile'>
                                             <img src='https://th.bing.com/th/id/OIP.7O4_GREtLbxqPdJCTmfatQHaHa?rs=1&pid=ImgDetMain' alt={item.userFullName} />
                                             <div>
