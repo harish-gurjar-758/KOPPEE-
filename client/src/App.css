@@ -965,7 +965,9 @@ td {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 50px;
+  margin-top: 40px;
 
   .card {
     width: 100px;
