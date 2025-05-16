@@ -86,6 +86,7 @@ export default function NavBar() {
                         <h4>Offers</h4></Link>
                     <Link className="link"
                         onClick={handleLinkClick}
+                        to='/shops-location'
                     >
                         <h4>Shops</h4></Link>
                     <Link className='link' to='/reservation'
@@ -94,6 +95,7 @@ export default function NavBar() {
                         Reservation</Link>
                     <Link className="link"
                         onClick={handleLinkClick}
+                        to='/contacts'
                     >
                         <h4>Contact</h4></Link>
                 </div>

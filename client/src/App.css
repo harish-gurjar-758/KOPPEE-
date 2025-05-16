@@ -1108,13 +1108,13 @@ td {
   /* border: 2px solid red; */
 }
 
-.FoodDetailed .food-dtails .food-details-lefte {
-  width: 50%;
-  /* display: flex; */
-  /* flex-direction: column; */
+.FoodDetailed .food-details .food-details-left {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
   /* align-items: center; */
   /* justify-content: space-between; */
-  /* gap: 60px; */
+  gap: 60px;
 
   .image {
     width: 100%;
@@ -1312,7 +1312,7 @@ td {
 
 
 @media (max-width: 600px) {
-  .FoodDetailed .food-dtails .food-details-lefte {
+  .FoodDetailed .food-details .food-details-left {
     width: 100%;
   }
 
