@@ -9,9 +9,14 @@ import FoodDetailed from './components/Pages/FoodDetailed';
 import Offers from './components/Pages/Offers';
 import Shops from './components/Pages/Shops';
 import Contacts from './components/Pages/Contacts';
+import { useEffect } from 'react';
 
 
 function App() {
+  useEffect(() => {
+    // for the page loading on the top
+    window.scrollTo(0, 0);
+  }, [])
   return (
     <Router>
       <div className="App">

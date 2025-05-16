@@ -465,10 +465,10 @@ export default function Home() {
           {testimonialsData.map((item, index) => (
             <div className='card testimonial-card' key={index}>
               <div className='profile'>
-                <img 
-                src='https://th.bing.com/th/id/OIP.7O4_GREtLbxqPdJCTmfatQHaHa?rs=1&pid=ImgDetMain'
-                 alt={item.userFullName} 
-                 />
+                <img
+                  src='https://th.bing.com/th/id/OIP.7O4_GREtLbxqPdJCTmfatQHaHa?rs=1&pid=ImgDetMain'
+                  alt={item.userFullName}
+                />
                 <div>
                   <h5>{item.userFullName}</h5>
                   <h6>
@@ -538,8 +538,14 @@ export default function Home() {
             <h2>Working Hours</h2>
             <p>Rolorem, beatae dolorum, praesentium itaque et quam auaerat.</p>
             <div className="btn-group">
-              <div className="btn orange-btn">Book A Table</div>
-              <div className="btn">Contact us</div>
+              <div
+                className="btn orange-btn"
+                onClick={() => navigate('/reservation')}
+              >Book A Table</div>
+              <div
+                className="btn"
+                onClick={() => navigate('/contacts')}
+              >Contact us</div>
             </div>
           </div>
           <div>
