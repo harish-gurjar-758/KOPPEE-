@@ -1312,13 +1312,27 @@ td {
 
 
 @media (max-width: 600px) {
+
+
+  .FoodDetailed .food-details {
+    width: 95%;
+  }
+
   .FoodDetailed .food-details .food-details-left {
     width: 100%;
   }
 
   .FoodDetailed .food-dtails .food-details-right {
+    width: 100% !important;
+  }
+
+  .FoodDetailed .food-details .food-details-right .product-main-btns {
     width: 100%;
   }
+  
+.FoodDetailed .food-details .food-details-right .feedback-container{
+  width: 100%;
+}
 }
 
 /* ------------ */
